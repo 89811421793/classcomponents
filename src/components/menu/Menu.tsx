@@ -3,33 +3,27 @@ import React from 'react';
 export class Menu extends React.Component<{ menuItems: Array<string> }> {
     render() {
         return (
-            <div style={menuStyle}>
-                <ul style={ulStyle}>
-                    {this.props.menuItems.map((tabItem) => {
-                        return (
-                            <li key={tabItem} style={liStyle}>
-                                <a href="#" style={linkStyle}>{tabItem}</a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
+            <ul style={ulStyle}>
+                {this.props.menuItems.map((tabItem) => {
+                    return (
+                        <li key={tabItem} style={liStyle}>
+                            <a href="#" style={linkStyle}>{tabItem}</a>
+                        </li>
+                    );
+                })}
+            </ul>
         );
     }
 }
 
 // Стили для меню
-const menuStyle: React.CSSProperties = {
-    flex: '1',
-    display: 'flex',
-    justifyContent: 'center',
-};
-
 const ulStyle: React.CSSProperties = {
     listStyleType: 'none',
     padding: 0,
     margin: 0,
     display: 'flex',
+    flex: '1', 
+    justifyContent: 'center',
 };
 
 const liStyle: React.CSSProperties = {
@@ -38,5 +32,5 @@ const liStyle: React.CSSProperties = {
 
 const linkStyle: React.CSSProperties = {
     textDecoration: 'none',
-    color: '#FFFFFF', // Цвет текста
+    color: '#FFFFFF', 
 };
