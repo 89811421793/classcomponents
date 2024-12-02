@@ -1,6 +1,17 @@
 import "./reset.css";
 import { ThemeProvider, Typography } from "@mui/material";
 import theme from "./mui/theme";
+import { styled } from "@mui/material/styles"; 
+
+// Создаем стилизованный компонент на основе базового HTML-тега div
+const StyledDiv = styled('div')(({ theme }) => ({
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 700,
+  marginBottom: '20px',
+  color: theme.palette.text.primary, 
+  padding: '10px',
+  backgroundColor: theme.palette.background.default, 
+}));
 
 function App() {
   return (
@@ -16,9 +27,29 @@ function App() {
         Architecto quaerat repellat saepe placeat, velit fugiat? Incidunt repellat illo, animi ut quam, repudiandae eaque temporibus distinctio doloribus voluptatibus odio odit quae assumenda natus ipsum velit labore asperiores aspernatur dolor.</p>
         </Typography>
       </ThemeProvider>
-     
+     <StyledTypography variant="body1">
+      Заметка: В MUI оказывается есть еще styled components (styled API).
+     </StyledTypography>
+     <StyledDiv>пример, как создать стилизованный компонент, который не зависит от существующего компонента Material-UI</StyledDiv>
     </div>
   );
 }
 
 export default App;
+
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 700,
+  marginBottom: '20px', 
+  color: theme.palette.text.secondary, 
+}));
+
+
+// без параметра theme, если мы не обращаемся к theme
+// const StyledTypography = styled(Typography)({
+//   fontFamily: 'Montserrat, sans-serif',
+//   fontWeight: 700,
+//   marginBottom: '20px',
+// });
+
