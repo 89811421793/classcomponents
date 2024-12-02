@@ -1,5 +1,12 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --primary-color: #111214;
+  --accent-color: #FE390C;
+  --secondary-color-light: #F7F7F7;
+  --secondary-color-dark: #A7AAB4;
+  --text-color-dark: #111214;
+  --text-color-light: #A9A9AA;
+
+  font-family: 'Anton', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,11 +31,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-
 }
 
 h1 {
@@ -66,4 +68,37 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+@font-face {
+  font-family: 'Anton';
+  src: local('Anton'), url('./assets/fonts/Anton-Regular.woff2') format('woff2');   
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'), url('./assets/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;  
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'), url('./assets/fonts/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'), url('./assets/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal; 
+  font-display: swap; 
 }

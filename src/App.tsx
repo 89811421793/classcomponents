@@ -1,15 +1,12 @@
-import { MyExampleToStart } from './components/MyExampleToStart';
-import { Icon } from './components/Icon';
-
+import "./reset.css";
 
 function App() {
   
-
-  return (
-    <div style={{backgroundColor:'khaki'}}>
-      <MyExampleToStart title='MyExampleToStart'/>
+    return (
+    <div>
+<h1>dfd</h1>
       
-      <Icon iconId={"zendesk"}/>
+    
     
     </div>
   )
