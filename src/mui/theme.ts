@@ -21,7 +21,7 @@ const theme = createTheme({
             main: '#111214',
         },
         secondary: {
-            main: '#A7AAB4',
+            main: '#111214',
         },
         accent: { // Теперь это допустимо
             main: '#FE390C',

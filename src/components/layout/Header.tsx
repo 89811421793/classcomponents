@@ -3,6 +3,7 @@ import { Menu } from "../menu/Menu";
 import { Button, Container, Box } from "@mui/material";
 import { Logo } from "../Logo";
 
+
 const items = ["home", "about", "service", "portfolio"];
 
 export class Header extends React.Component {
@@ -12,7 +13,7 @@ export class Header extends React.Component {
         component="header" 
         sx={{ 
           padding: "10px 20px", 
-          backgroundColor: "#242424", 
+          backgroundColor: theme => theme.palette.primary.main, 
           color: "#FFFFFF", 
           width: "100%" 
         }}
