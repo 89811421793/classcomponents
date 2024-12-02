@@ -5,7 +5,7 @@ export class Logo extends React.Component {
   render() {
     return (
       <a href="/">
-        <Icon iconId={"foxlogo"} />
+        <Icon iconId={"foxlogo"}/>
       </a>
     );
   }

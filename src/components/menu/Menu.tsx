@@ -1,36 +1,38 @@
 import React from 'react';
+import { Box, Link } from '@mui/material';
 
 export class Menu extends React.Component<{ menuItems: Array<string> }> {
     render() {
         return (
-            <ul style={ulStyle}>
-                {this.props.menuItems.map((tabItem) => {
-                    return (
-                        <li key={tabItem} style={liStyle}>
-                            <a href="#" style={linkStyle}>{tabItem}</a>
-                        </li>
-                    );
-                })}
-            </ul>
+            <Box 
+                component="ul" 
+                sx={{ 
+                    listStyleType: 'none', 
+                    padding: 0, 
+                    margin: 0, 
+                    display: 'flex', 
+                    flex: '1', 
+                    justifyContent: 'center' 
+                }}
+            >
+                {this.props.menuItems.map((tabItem) => (
+                    <Box 
+                        component="li" 
+                        key={tabItem} 
+                        sx={{ margin: '0 15px' }}
+                    >
+                        <Link 
+                            href="#" 
+                            sx={{ 
+                                textDecoration: 'none', 
+                                color: '#FFFFFF' 
+                            }}
+                        >
+                            {tabItem}
+                        </Link>
+                    </Box>
+                ))}
+            </Box>
         );
     }
 }
-
-// Стили для меню
-const ulStyle: React.CSSProperties = {
-    listStyleType: 'none',
-    padding: 0,
-    margin: 0,
-    display: 'flex',
-    flex: '1', 
-    justifyContent: 'center',
-};
-
-const liStyle: React.CSSProperties = {
-    margin: '0 15px',
-};
-
-const linkStyle: React.CSSProperties = {
-    textDecoration: 'none',
-    color: '#FFFFFF', 
-};
