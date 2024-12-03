@@ -12,20 +12,32 @@ export class Menu extends React.Component<{ menuItems: Array<string> }> {
                     margin: 0, 
                     display: 'flex', 
                     flex: '1', 
-                    justifyContent: 'center' 
+                    justifyContent: 'center',
+                    gap: '55px', // Устанавливаем отступ между пунктами меню
                 }}
             >
                 {this.props.menuItems.map((tabItem) => (
                     <Box 
                         component="li" 
                         key={tabItem} 
-                        sx={{ margin: '0 15px' }}
+                        sx={{ 
+                            '&:last-child': {
+                                marginRight: 0, // Убираем margin-right у последнего элемента
+                            },
+                        }}
                     >
                         <Link 
                             href="#" 
                             sx={{ 
                                 textDecoration: 'none', 
-                                color: '#FFFFFF' 
+                                color: theme => theme.palette.text.secondary, // Цвет текста
+                                textTransform: 'uppercase', // Преобразование текста в верхний регистр
+                                fontFamily: 'Montserrat', // Используем шрифт Montserrat
+                                fontSize: '12px', // Устанавливаем размер шрифта
+                                fontWeight: 600, // Устанавливаем жирность шрифта
+                                '&:hover': {
+                                    color: theme => theme.palette.accent.main, // Цвет при наведении
+                                },
                             }}
                         >
                             {tabItem}
