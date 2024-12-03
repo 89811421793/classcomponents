@@ -1,3 +1,4 @@
+import { Home } from "./pages/homepage/Home";
 import "./reset.css";
 
 
@@ -5,7 +6,7 @@ import "./reset.css";
 function App() {
   return (
     <div>
-     Главный контент
+     <Home/>
     </div>
   );
 }
