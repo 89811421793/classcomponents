@@ -6,7 +6,7 @@ export class Footer extends React.Component {
         return (
             <Box
                 sx={{
-                    backgroundColor: (theme) => theme.palette.primary.main,
+                    backgroundColor: (theme) => theme.palette.background.default,
                     paddingY: '30px',
                     textAlign: 'center',
                 }}

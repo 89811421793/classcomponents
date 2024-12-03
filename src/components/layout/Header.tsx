@@ -13,7 +13,7 @@ export class Header extends React.Component {
         component="header"
         sx={{
           padding: "10px 20px",
-          backgroundColor: (theme) => theme.palette.primary.main,
+          backgroundColor: (theme) => theme.palette.background.default,
         }}
       >
         <Container
@@ -44,14 +44,14 @@ export class Header extends React.Component {
               flex: "0 0 auto",
               border: (theme: Theme) =>
                 `1px solid ${theme.palette.accent.main}`,
-              color: (theme) => theme.palette.accent.main, // Цвет текста
-              padding: "12px 16px", // Паддинг
-              backgroundColor: (theme) => theme.palette.primary.main, // Цвет фона такой же как у header
-              fontFamily: "Montserrat", // Шрифт
-              fontSize: "12px", // Размер шрифта
-              fontWeight: 600, // Жирность шрифта
+              color: (theme) => theme.palette.accent.main,
+              padding: "12px 16px", 
+              backgroundColor: (theme) => theme.palette.background.default, // Цвет фона такой же как у header
+              fontFamily: "Montserrat", 
+              fontSize: "12px", 
+              fontWeight: 600, 
               "&:hover": {
-                backgroundColor: (theme) => theme.palette.primary.main, // Цвет фона при наведении
+                backgroundColor: (theme) => theme.palette.background.default, // Цвет фона при наведении
               },
             }}
           >
