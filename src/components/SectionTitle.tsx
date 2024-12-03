@@ -25,7 +25,7 @@ class SectionTitle extends Component<SectionTitleProps> {
                     color: (theme) => theme.palette.accent.main,
                 },
             }}>
-                <Typography component="h2" sx={{ fontFamily: 'Anton',  fontWeight: 400,  fontSize: '40px', }}>
+                <Typography component="h2" sx={{ fontFamily: 'Anton',  fontWeight: 400,  fontSize: '40px', textTransform: 'uppercase', }}>
                     {title} 
                 </Typography>
             </Box>
