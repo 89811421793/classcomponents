@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Box, Typography } from "@mui/material";
+import { Container, Box, Typography, Button } from "@mui/material";
 import SectionTitle from "../../../components/SectionTitle";
 import aboutImg1 from "../../../assets/images/about_img1.png";
 import aboutImg2 from "../../../assets/images/about_img2.png";
@@ -157,7 +157,7 @@ export class AboutSection extends Component {
               <li
                 key={iconId}
                 style={{
-                  margin: index < icons.length - 1 ? "0 90px 0 0" : "0",
+                  margin: index < icons.length - 1 ? "0 80px 0 0" : "0",
                 }}
               >
                 <Icon iconId={iconId} width="144" height="28" />
@@ -167,19 +167,56 @@ export class AboutSection extends Component {
         </Box>
 
         {/* Абсолютно спозиционированный контейнер */}
-         <Container sx={{ 
-                    minHeight: '40vh', 
-                    backgroundColor: 'secondary.main', 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    position: 'absolute', 
-                    left: '0',
-                    right: '0', 
-                    transform: 'translateY(-35%)'
-                }}>
-                    <Typography variant="h6" sx={{ color: 'white' }}>контейнер</Typography>
-                </Container> 
+        <Container
+          sx={{
+            minHeight: "50vh",
+            backgroundColor: "secondary.main",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            left: "0",
+            right: "0",
+            transform: "translateY(-30%)",
+            flexDirection: "column",
+            gap: "30px",
+            zIndex: 10
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: "background.paper", // Directly using the theme value
+              fontFamily: "Anton",
+              fontSize: "40px",
+              fontWeight: 400,
+            }}
+          >
+            Let’s Work Together On Your Next Project
+          </Typography>
+          <Button
+            sx={{
+              fontFamily:'Montserrat',
+              fontWeight: 600,
+              fontSize:'12px',
+              border: "none",
+              backgroundColor: "accent.main", // Directly using the theme value
+              textTransform: "uppercase",
+              padding: "16px 24px",
+              color: "background.paper", // Directly using the theme value
+            }}
+          >
+           Hire me now
+          </Button>
+          <a
+            href="#"
+            download
+            style={{ display: "flex", justifyItems: "center", color: "#A9A9AA" }} 
+          >
+            <Icon iconId="download" width='16' height='16' />
+            <span style={{ marginLeft: "10px", fontFamily:'Montserrat', fontWeight: 600,fontSize:'14px'}}>Download CV</span>
+          </a>
+        </Container>
       </section>
     );
   }
