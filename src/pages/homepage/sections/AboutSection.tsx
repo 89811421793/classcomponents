@@ -10,8 +10,8 @@ export class AboutSection extends Component {
         const icons = ['behance', 'slack', 'dribbble', 'twilio', 'github'];
 
         return (
-            <section>
-                <Container sx={{ minHeight: '80vh', display: 'flex' }}>
+            <section style={{position:'relative'}}>
+                <Container sx={{ minHeight: '80vh', display: 'flex', position: 'relative' }}>
                     {/* Левый блок */}
                     <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', paddingRight: '60px'}}>
                         <img src={aboutImg1} alt="About Image 1" style={{ width: '230px', height: '255px', objectFit: 'cover' }} />
@@ -59,8 +59,9 @@ export class AboutSection extends Component {
                         </Typography>
                     </Box>
                 </Container>
+
                 <Box component="div" sx={{ minHeight: '40vh', backgroundColor: '#F7F7F7', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', pt: 4 }}>
-                <ul style={{ display: 'flex', padding: 0, marginTop:'88px', }}>
+                    <ul style={{ display: 'flex', padding: 0, marginTop:'88px', }}>
                         {icons.map((iconId, index) => (
                             <li key={iconId} style={{ margin: index < icons.length - 1 ? '0 90px 0 0' : '0'}}>
                                 <Icon iconId={iconId} width='144' height='28'/>
@@ -68,6 +69,21 @@ export class AboutSection extends Component {
                         ))}
                     </ul>
                 </Box>
+
+                {/* Абсолютно спозиционированный контейнер */}
+                <Container sx={{ 
+                    minHeight: '40vh', 
+                    backgroundColor: 'secondary.main', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    position: 'absolute', 
+                    left: '0',
+                    right: '0', 
+                    transform: 'translateY(-35%)'
+                }}>
+                    <Typography variant="h6" sx={{ color: 'white' }}>контейнер</Typography>
+                </Container>
             </section>
         );
     }
