@@ -40,26 +40,21 @@ export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
                         key={tab.key}
                         onClick={() => this.handleTabClick(tab.key)}
                         sx={{
-                            minWidth: 'auto', 
-                            padding: selectedTab === tab.key ? '12px 16px' : '0',
+                            minWidth: 'auto',
+                            padding: '12px 16px', 
                             marginRight: tab.key === 'web' ? '0' : '24px',
                             border: selectedTab === tab.key ? (theme) => `1px solid ${theme.palette.accent.main}` : 'none',
-                            backgroundColor: 'transparent', 
+                            backgroundColor: 'transparent',
                             color: selectedTab === tab.key ? (theme) => theme.palette.accent.main : (theme) => theme.palette.text.secondary,
-                            outline: 'none', 
+                            outline: 'none',
                             '&.Mui-selected': {
-                               
                                 color: (theme) => theme.palette.accent.main,
                             },
                             '&:focus': {
-                                outline: 'none', 
+                                outline: 'none'
                             },
-
                             '&:hover': {
-                                border:  (theme) => `1px solid ${theme.palette.accent.main}`, 
-                                padding: "12px 16px",
-                                color: (theme) => theme.palette.accent.main,
-                                marginRight:'12px'
+                                border: selectedTab === tab.key ? (theme) => `1px solid ${theme.palette.accent.main}` : 'none',
                             }
                         }}
                         label={
