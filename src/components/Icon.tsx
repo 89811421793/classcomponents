@@ -7,6 +7,7 @@ type IconPropsType = {
   height?: string;
   viewBox?: string;
   className?: string;
+ 
 };
 
 export class Icon extends React.Component<IconPropsType> {

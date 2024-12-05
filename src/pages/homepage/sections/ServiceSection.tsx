@@ -8,24 +8,28 @@ export class ServiceSection extends Component {
     const services = [
       {
         iconId: 'uiux',
+        hoverIconId: 'uiux_white',
         title: 'UI/UX Design',
         description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Vuis enim velit ullamco.',
         key: 'service1'
       },
       {
         iconId: 'productdesign',
+        hoverIconId: 'productdesign_white',
         title: 'Product Design',
         description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Vuis enim velit ullamco.',
         key: 'service2'
       },
       {
         iconId: 'brandidentity',
+        hoverIconId: 'brandidentity_white',
         title: 'Brand Identity',
         description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Vuis enim velit ullamco.',
         key: 'service3'
       },
       {
         iconId: 'websitedesign',
+        hoverIconId: 'websitedesign_white',
         title: 'Website Design',
         description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Vuis enim velit ullamco.',
         key: 'service4'
@@ -43,6 +47,7 @@ export class ServiceSection extends Component {
               <ServiceCard
                 key={service.key}
                 iconId={service.iconId}
+                hoverIconId={service.hoverIconId}
                 title={service.title}
                 description={service.description}
               />
