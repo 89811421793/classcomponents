@@ -21,7 +21,8 @@ class SectionTitle extends Component<SectionTitleProps> {
           "&::before": {
             content: `"${index < 10 ? "0" : ""}${index}"`,
             position: "absolute",
-            left: "4%",
+            top:'-1%',
+            left:'1%',
             transform: "translateX(-50%)",
             fontFamily: "Anton",
             fontSize: "80px",
