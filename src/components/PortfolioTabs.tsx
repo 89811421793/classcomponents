@@ -41,9 +41,10 @@ export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
                         onClick={() => this.handleTabClick(tab.key)}
                         sx={{
                             minWidth: 'auto',
-                            padding: '12px 16px', 
+                            padding: '4px 12px', 
                             marginRight: tab.key === 'web' ? '0' : '24px',
-                            border: selectedTab === tab.key ? (theme) => `1px solid ${theme.palette.accent.main}` : 'none',
+                            border: selectedTab === tab.key ? (theme) => `2px solid ${theme.palette.accent.main}` : 'none',
+                            borderRadius:'5px',
                             backgroundColor: 'transparent',
                             color: selectedTab === tab.key ? (theme) => theme.palette.accent.main : (theme) => theme.palette.text.secondary,
                             outline: 'none',
@@ -54,7 +55,7 @@ export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
                                 outline: 'none'
                             },
                             '&:hover': {
-                                border: selectedTab === tab.key ? (theme) => `1px solid ${theme.palette.accent.main}` : 'none',
+                                border: selectedTab === tab.key ? (theme) => `2px solid ${theme.palette.accent.main}` : 'none',
                             }
                         }}
                         label={
