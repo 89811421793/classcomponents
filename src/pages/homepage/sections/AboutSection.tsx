@@ -12,7 +12,7 @@ export class AboutSection extends Component {
     return (
       <section style={{ position: "relative" }}>
         <Container
-          sx={{ minHeight: "80vh", display: "flex", position: "relative" }}
+          sx={{ minHeight: "60vh", display: "flex", position: "relative" }}
         >
           {/* Левый блок */}
           <Box
