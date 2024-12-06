@@ -20,6 +20,7 @@ interface PortfolioSectionProps {}
 interface PortfolioSectionState {
   activeIndex: number;
   swiper: SwiperType | null;
+  currentSlides: { id: string; src: string }[];
 }
 
 export class PortfolioSection extends Component<
@@ -34,6 +35,12 @@ export class PortfolioSection extends Component<
     this.state = {
       activeIndex: 0,
       swiper: null,
+      currentSlides: [
+        { id: "slide1", src: s1 },
+        { id: "slide2", src: s2 },
+        { id: "slide3", src: s3 },
+        { id: "slide4", src: s4 },
+      ],
     };
   }
 
@@ -70,7 +77,9 @@ export class PortfolioSection extends Component<
     const { swiper } = this.state;
     if (swiper) {
       const newIndex =
-        this.state.activeIndex < 3 ? this.state.activeIndex + 1 : 3;
+        this.state.activeIndex < this.state.currentSlides.length - 1
+          ? this.state.activeIndex + 1
+          : this.state.currentSlides.length - 1;
       swiper.slideTo(newIndex);
       this.setState({ activeIndex: newIndex });
     }
@@ -88,8 +97,35 @@ export class PortfolioSection extends Component<
     }
   };
 
+  updateSlides = (selectedTab: string) => {
+    let slides;
+    switch (selectedTab) {
+      case "uiux":
+        slides = [{ id: "slide1", src: s1 }];
+        break;
+      case "product":
+        slides = [{ id: "slide2", src: s2 }];
+        break;
+      case "branding":
+        slides = [{ id: "slide3", src: s3 }];
+        break;
+      case "web":
+        slides = [{ id: "slide4", src: s4 }];
+        break;
+      default:
+        slides = [
+          { id: "slide1", src: s1 },
+          { id: "slide2", src: s2 },
+          { id: "slide3", src: s3 },
+          { id: "slide4", src: s4 },
+        ];
+        break;
+    }
+    this.setState({ currentSlides: slides, activeIndex: 0 });
+  };
+
   render() {
-    const { activeIndex } = this.state;
+    const { activeIndex, currentSlides } = this.state;
 
     const navigationButtonStyle: React.CSSProperties = {
       cursor: "pointer",
@@ -109,7 +145,7 @@ export class PortfolioSection extends Component<
     const rightButtonStyle: React.CSSProperties = {
       ...navigationButtonStyle,
       transform: "rotate(180deg)",
-      opacity: activeIndex === 3 ? 0.5 : 1,
+      opacity: activeIndex === currentSlides.length - 1 ? 0.5 : 1,
     };
 
     const indicatorStyle: React.CSSProperties = {
@@ -138,28 +174,16 @@ export class PortfolioSection extends Component<
       overflow: "hidden",
     };
 
-    const activeSlideStyle: React.CSSProperties = {
-      /*для других визуальных эффектов, если понадобится что то кроме оверлэя*/
-      ...slideStyle,
-    };
-
     const overlayStyle = (index: number): React.CSSProperties => ({
       position: "absolute",
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: "#00000096", // Полупрозрачный черный цвет
-      opacity: activeIndex === index ? 1 : 0, // Отображать наложение только для активного слайда
-      transition: "opacity 0.3s ease", // Плавный переход
+      backgroundColor: "#00000096",
+      opacity: activeIndex === index ? 1 : 0,
+      transition: "opacity 0.3s ease",
     });
-
-    const slides = [
-      { id: "slide1", src: s1 },
-      { id: "slide2", src: s2 },
-      { id: "slide3", src: s3 },
-      { id: "slide4", src: s4 },
-    ];
 
     return (
       <section
@@ -181,7 +205,7 @@ export class PortfolioSection extends Component<
           >
             <Box sx={{ display: "flex", alignItems: "center", gap: "90px" }}>
               <SectionTitle index={3} title={"Portfolio"} />
-              <PortfolioTabs />
+              <PortfolioTabs updateSlides={this.updateSlides} />
             </Box>
             <Box sx={{ display: "flex", gap: "24px" }}>
               <div ref={this.swiperPrevRef} style={navigationButtonStyle}>
@@ -203,16 +227,12 @@ export class PortfolioSection extends Component<
               onSlideChange={this.handleSlideChange}
               modules={[Navigation]}
             >
-              {slides.map((slide, index) => (
+              {currentSlides.map((slide, index) => (
                 <SwiperSlide
                   key={slide.id}
                   onClick={() => this.handleSlideClick(index)}
                 >
-                  <div
-                    style={
-                      activeIndex === index ? activeSlideStyle : slideStyle
-                    }
-                  >
+                  <div style={slideStyle}>
                     <img
                       src={slide.src}
                       alt={`Slide ${slide.id}`}
@@ -222,8 +242,7 @@ export class PortfolioSection extends Component<
                         borderRadius: "8px",
                       }}
                     />
-                    <div style={overlayStyle(index)} />{" "}
-                    {/* Наложение для активного слайда */}
+                    <div style={overlayStyle(index)} />
                   </div>
                 </SwiperSlide>
               ))}
@@ -236,7 +255,7 @@ export class PortfolioSection extends Component<
               justifyContent: "center",
             }}
           >
-            {slides.map((_, index) => (
+            {currentSlides.map((_, index) => (
               <span
                 key={`indicator-${index}`}
                 style={

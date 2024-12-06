@@ -6,11 +6,15 @@ interface TabItem {
     key: string;
 }
 
+interface PortfolioTabsProps {
+    updateSlides: (selectedTab: string) => void;
+}
+
 interface PortfolioTabsState {
     selectedTab: string;
 }
 
-export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
+export class PortfolioTabs extends Component<PortfolioTabsProps, PortfolioTabsState> {
     private tabItems: TabItem[] = [
         { label: "all", key: "all" },
         { label: "ui/ux design", key: "uiux" },
@@ -19,7 +23,7 @@ export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
         { label: "web design", key: "web" }
     ];
 
-    constructor(props: {}) {
+    constructor(props: PortfolioTabsProps) {
         super(props);
         this.state = {
             selectedTab: "all" // "all" is selected by default
@@ -28,6 +32,7 @@ export class PortfolioTabs extends Component<{}, PortfolioTabsState> {
 
     handleTabClick = (key: string) => {
         this.setState({ selectedTab: key });
+        this.props.updateSlides(key);
     }
 
     render() {
