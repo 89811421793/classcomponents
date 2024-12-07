@@ -3,7 +3,7 @@ import { Container, Box } from "@mui/material";
 import SectionTitle from '../../../components/SectionTitle';
 import { ServiceCard } from "../../../components/ServiceCard";
 
-export class ServiceSection extends Component {
+export class ServicePageSection extends Component {
   render() {
     const services = [
       {
@@ -37,9 +37,9 @@ export class ServiceSection extends Component {
     ];
 
     return (
-      <section style={{ minHeight: '100vh' }}>
-        <Box sx={{ minHeight: '55vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', position: 'relative' }}>
-          <SectionTitle index={2} title={"My Service"} />
+      <section style={{ minHeight: '50vh' }}>
+        <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', position: 'relative',marginTop:'100px' }}>
+          <SectionTitle index={1} title={"My Service"} />
         </Box>
         <Container sx={{ marginTop: '60px', padding: '0', alignCenter:'center', marginBottom:'80px' }}>
           <Box sx={{ display: 'flex', gap: '60px', justifyContent: 'flex-start' }}>
