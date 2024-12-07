@@ -7,19 +7,14 @@ import s1 from "../../../assets/images/slide1.jpg";
 import s2 from "../../../assets/images/slide2.jpg";
 import s3 from "../../../assets/images/slide3.jpg";
 import s4 from "../../../assets/images/about_img2.png";
-import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import "swiper/swiper-bundle.css";
-import { Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-
-SwiperCore.use([Navigation]);
+import { PortfolioSlider } from "../../../components/PortfolioSlider";
 
 interface PortfolioSectionProps {}
 
 interface PortfolioSectionState {
   activeIndex: number;
-  swiper: SwiperType | null;
+  swiper: SwiperCore | null;
   currentSlides: { id: string; src: string }[];
 }
 
@@ -85,7 +80,7 @@ export class PortfolioSection extends Component<
     }
   };
 
-  handleSlideChange = (swiper: SwiperType) => {
+  handleSlideChange = (swiper: SwiperCore) => {
     this.setState({ activeIndex: swiper.activeIndex });
   };
 
@@ -148,47 +143,10 @@ export class PortfolioSection extends Component<
       opacity: activeIndex === currentSlides.length - 1 ? 0.5 : 1,
     };
 
-    const indicatorStyle: React.CSSProperties = {
-      backgroundColor: "#E0E0E0",
-      width: "15px",
-      height: "3px",
-      borderRadius: "1px",
-      marginRight: "4px",
-    };
-
-    const activeIndicatorStyle: React.CSSProperties = {
-      backgroundColor: "#FF4081",
-      width: "15px",
-      height: "3px",
-      borderRadius: "1px",
-      marginRight: "4px",
-    };
-
-    const slideStyle: React.CSSProperties = {
-      width: "364px",
-      height: "250px",
-      position: "relative",
-      cursor: "pointer",
-      background: "transparent",
-      borderRadius: "8px",
-      overflow: "hidden",
-    };
-
-    const overlayStyle = (index: number): React.CSSProperties => ({
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: "#00000096",
-      opacity: activeIndex === index ? 1 : 0,
-      transition: "opacity 0.3s ease",
-    });
-
     return (
       <section
         style={{
-          minHeight: "90vh",
+          minHeight: "70vh",
           position: "relative",
           backgroundColor: "#F7F7F7",
           paddingTop: "100px",
@@ -217,53 +175,13 @@ export class PortfolioSection extends Component<
             </Box>
           </Box>
 
-          <Box sx={{ marginTop: "60px", position: "relative" }}>
-            <Swiper
-              spaceBetween={24}
-              slidesPerView={3}
-              onSwiper={(swiper) => {
-                this.setState({ swiper }, this.initializeSwiper);
-              }}
-              onSlideChange={this.handleSlideChange}
-              modules={[Navigation]}
-            >
-              {currentSlides.map((slide, index) => (
-                <SwiperSlide
-                  key={slide.id}
-                  onClick={() => this.handleSlideClick(index)}
-                >
-                  <div style={slideStyle}>
-                    <img
-                      src={slide.src}
-                      alt={`Slide ${slide.id}`}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: "8px",
-                      }}
-                    />
-                    <div style={overlayStyle(index)} />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Box>
-          <Box
-            sx={{
-              marginTop: "40px",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            {currentSlides.map((_, index) => (
-              <span
-                key={`indicator-${index}`}
-                style={
-                  index === activeIndex ? activeIndicatorStyle : indicatorStyle
-                }
-              />
-            ))}
-          </Box>
+          <PortfolioSlider
+            currentSlides={currentSlides}
+            activeIndex={activeIndex}
+            onSlideChange={this.handleSlideChange}
+            onSlideClick={this.handleSlideClick}
+            onSwiperInitialized={(swiper) => this.setState({ swiper }, this.initializeSwiper)}
+          />
         </Container>
       </section>
     );
