@@ -41,7 +41,7 @@ export class ServiceTop extends Component<ServiceTopProps, ServiceTopState> {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      flexDirection: "column", // Добавлено для вертикального выравнивания
+      flexDirection: "column", 
     };
 
     return (
@@ -55,7 +55,7 @@ export class ServiceTop extends Component<ServiceTopProps, ServiceTopState> {
               fontFamily: "Anton",
               fontSize: "130px",
               fontWeight: 400,
-              marginBottom: "20px", // Отступ между заголовком и Breadcrumbs
+              marginBottom: "20px", 
             }}
           >
             Service
@@ -85,7 +85,7 @@ export class ServiceTop extends Component<ServiceTopProps, ServiceTopState> {
                 fontWeight: 700,
                 textDecoration: "none",
               }}
-              onClick={this.handleServiceClick} // Изменил название метода
+              onClick={this.handleServiceClick} 
             >
               Service
             </Link>
