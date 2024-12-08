@@ -1,10 +1,11 @@
 import { Component } from 'react';
+import { AboutTop } from './sections/AboutTop';
 
 export class About extends Component {
     render() {
         return (
             <div>
-              Кто я/Обо мне
+             <AboutTop/>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import SectionTitle from "../../../components/SectionTitle";
 import aboutImg1 from "../../../assets/images/about_img1.png";
 import aboutImg2 from "../../../assets/images/about_img2.png";
+import workBg from "../../../assets/images/work_bg.jpg";
 import { Icon } from "../../../components/Icon";
 
 export class AboutSection extends Component {
@@ -170,7 +171,8 @@ export class AboutSection extends Component {
         <Container
           sx={{
             minHeight: "50vh",
-            backgroundColor: "secondary.main",
+            backgroundImage: `url(${workBg})`, 
+            backgroundSize: "cover", 
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
