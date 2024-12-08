@@ -1,12 +1,12 @@
 
-import { Service } from "./pages/servicepage/Service";
 
+import { Portfolio } from "./pages/portfoliopage/Portfolio";
 import "./reset.css";
 
 function App() {
   return (
     <div>
-      <Service />
+    <Portfolio/>
     </div>
   );
 }

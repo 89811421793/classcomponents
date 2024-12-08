@@ -19,7 +19,8 @@ export class PartnersSection extends Component {
             justifyContent: "flex-start",
             alignItems: "center",
             flexDirection:'column',
-            paddingTop: '100px'
+            paddingTop: '80px'
+            
           }}
         >
             
