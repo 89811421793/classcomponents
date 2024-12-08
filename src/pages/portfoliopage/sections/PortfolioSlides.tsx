@@ -10,22 +10,22 @@ import s4 from "../../../assets/images/about_img2.png";
 import SwiperCore from "swiper";
 import { PortfolioSlider } from "../../../components/PortfolioSlider";
 
-interface PortfolioPageSectionProps {}
+interface PortfolioSlidesProps {}
 
-interface PortfolioPageSectionState {
+interface PortfolioSlidesState {
   activeIndex: number;
   swiper: SwiperCore | null;
   currentSlides: { id: string; src: string }[];
 }
 
-export class PortfolioPageSection extends Component<
-  PortfolioPageSectionProps,
-  PortfolioPageSectionState
+export class PortfolioSlides extends Component<
+  PortfolioSlidesProps,
+  PortfolioSlidesState
 > {
   private swiperPrevRef = createRef<HTMLDivElement>();
   private swiperNextRef = createRef<HTMLDivElement>();
 
-  constructor(props: PortfolioPageSectionProps) {
+  constructor(props: PortfolioSlidesProps) {
     super(props);
     this.state = {
       activeIndex: 0,
