@@ -5,19 +5,15 @@ import { Service } from "./pages/servicepage/Service";
 
 import "./reset.css";
 
-
-
 function App() {
   return (
     <div>
-<Home/>
-<Service/>
-<Portfolio/>
-<About/>
+      <Home />
+      <About />
+      <Service />
+      <Portfolio />
     </div>
   );
 }
 
 export default App;
-
-
