@@ -17,12 +17,13 @@ class SectionTitle extends Component<SectionTitleProps> {
           position: "relative",
           color: (theme) => theme.palette.text.primary,
           paddingLeft: "70px",
+          paddingTop:'10px',
 
           "&::before": {
             content: `"${index < 10 ? "0" : ""}${index}"`,
             position: "absolute",
-            top:'-1%',
-            left:'6%',
+            top:'-2%',
+            left:'2%',
             transform: "translateX(-50%)",
             fontFamily: "Anton",
             fontSize: "80px",
