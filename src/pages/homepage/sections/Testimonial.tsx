@@ -126,7 +126,7 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
 
     const slideStyle: React.CSSProperties = {
       width: "364px",
-      height: "422px",
+      height: "475px",
       position: "relative",
       cursor: "pointer",
     };
@@ -150,20 +150,27 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
           position: "relative",
           backgroundColor: "#F7F7F7",
           paddingTop: "100px",
-          border: '3px solid violet'
+          border: "3px solid violet",
         }}
       >
         <Container
           sx={{
             display: "flex",
-            justifyContent: 'space-between',
-            alignItems: 'flex-start', 
+            justifyContent: "space-between",
+            alignItems: "stretch", // Изменено на stretch
             border: "2px solid",
-            padding: 0 
+            padding: 0,
           }}
         >
           {/* Left Side: Swiper */}
-          <Box sx={{ flex: 1, maxWidth: '370px', border: '3px solid yellow', marginLeft: '0' }}>
+          <Box
+            sx={{
+              flex: 1,
+              maxWidth: "370px",
+              border: "3px solid yellow",
+              marginLeft: "0",
+            }}
+          >
             <Swiper
               slidesPerView={1}
               onSwiper={(swiper) => {
@@ -178,7 +185,9 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
                   onClick={() => this.handleSlideClick(index)}
                 >
                   <div
-                    style={activeIndex === index ? activeSlideStyle : slideStyle}
+                    style={
+                      activeIndex === index ? activeSlideStyle : slideStyle
+                    }
                   >
                     <img
                       src={slide.src}
@@ -192,14 +201,61 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
           </Box>
 
           {/* Right Side: Title and Navigation */}
-          <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', paddingLeft: '0', border:'3px solid brown', maxWidth:'655px'}}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              paddingLeft: "0",
+              border: "3px solid brown",
+              maxWidth: "655px",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               <SectionTitle index={4} title={"Testimonial"} />
               <span>{`${activeIndex + 1}/${slides.length}`}</span>
             </Box>
-            <Box sx={{ flex: 1 }} /> {/* Spacer to push the indicator section to the bottom */}
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "40px" }}>
-              <Box sx={{ display: "flex" }}>
+            {/* New Content Block */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                marginTop: "48px",
+                marginBottom: "42px",
+                border: "1px solid olive",
+                minHeight:"220px"
+              }}
+            >
+              <Icon iconId="quote" width="21" height="13" />
+              <article style={{ maxWidth: "430px", marginTop: "10px" }}>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet.
+              </article>
+              <div style={{ marginTop: "20px", textAlign: "left" }}>
+                <strong>Esther Howard</strong>
+                <div>CEO of Adebe</div>
+              </div>
+            </Box>
+            <Box sx={{ flex: 1 }} />{" "}
+            {/* Spacer to push the indicator section to the bottom */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "40px",
+              }}
+            >
+              <Box sx={{ display: "flex", alignSelf:'flex-end' }}>
                 {slides.map((_, index) => (
                   <span
                     key={`indicator-${index}`}
