@@ -37,7 +37,6 @@ export class ServiceTop extends Component<ServiceTopProps, ServiceTopState> {
       backgroundSize: "contain",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
-      opacity: 0.8,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

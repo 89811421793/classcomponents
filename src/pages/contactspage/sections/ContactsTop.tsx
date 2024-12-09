@@ -37,7 +37,6 @@ export class ContactsTop extends Component<ContactsTopProps, ContactsTopState> {
       backgroundSize: "contain",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
-      opacity: 0.8,
       display: "flex",
       flexDirection: "column",
       alignItems: "center",

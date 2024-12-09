@@ -38,7 +38,6 @@ export class PortfolioTop extends Component<PortfolioTopProps, PortfolioTopState
             backgroundSize: "contain", 
             backgroundPosition: "center", 
             backgroundRepeat: "no-repeat", 
-            opacity: 0.8, 
             display: "flex",
             flexDirection: "column", 
             alignItems: "center", 

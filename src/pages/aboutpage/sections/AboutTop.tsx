@@ -37,7 +37,6 @@ export class AboutTop extends Component<AboutTopProps, AboutTopState> {
       backgroundSize: "contain",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
-      opacity: 0.8,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
