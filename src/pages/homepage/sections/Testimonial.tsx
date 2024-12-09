@@ -5,7 +5,6 @@ import { Icon } from "../../../components/Icon";
 import s1 from "../../../assets/images/slide1.jpg";
 import s2 from "../../../assets/images/slide2.jpg";
 import s3 from "../../../assets/images/slide3.jpg";
-import s4 from "../../../assets/images/about_img2.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
@@ -66,7 +65,7 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
     const { swiper } = this.state;
     if (swiper) {
       const newIndex =
-        this.state.activeIndex < 3 ? this.state.activeIndex + 1 : 3;
+        this.state.activeIndex < 2 ? this.state.activeIndex + 1 : 2;
       swiper.slideTo(newIndex);
       this.setState({ activeIndex: newIndex });
     }
@@ -105,7 +104,7 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
     const rightButtonStyle: React.CSSProperties = {
       ...navigationButtonStyle,
       transform: "rotate(180deg)",
-      opacity: activeIndex === 3 ? 0.5 : 1,
+      opacity: activeIndex === 2 ? 0.5 : 1,
     };
 
     const indicatorStyle: React.CSSProperties = {
@@ -125,23 +124,59 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
     };
 
     const slideStyle: React.CSSProperties = {
-      width: "364px",
-      height: "475px",
+      width: "370px",
+      height: "482px",
       position: "relative",
       cursor: "pointer",
     };
 
     const activeSlideStyle: React.CSSProperties = {
       ...slideStyle,
-      border: "2px solid red",
     };
 
     const slides = [
       { id: "slide1", src: s1 },
       { id: "slide2", src: s2 },
       { id: "slide3", src: s3 },
-      { id: "slide4", src: s4 },
     ];
+
+    const activeIndexStyle: React.CSSProperties = {
+      color: "#FE390C",
+      fontFamily: "Anton",
+      fontSize: "24px",
+      fontWeight: 400,
+    };
+
+    const inactiveIndexStyle: React.CSSProperties = {
+      color: "#A9A9AA",
+      fontFamily: "Anton",
+      fontSize: "24px",
+      fontWeight: 400,
+    };
+
+    const articleStyle: React.CSSProperties = {
+      maxWidth: "430px",
+      color: "#111214",
+      fontFamily: "Montserrat",
+      fontSize: "14px",
+      fontWeight: 500,
+      lineHeight: '32px'
+    };
+
+    const nameStyle: React.CSSProperties = {
+      color: "#FE390C",
+      fontFamily: "Montserrat",
+      fontSize: "16px",
+      fontWeight: 700,
+      marginBottom: '15px',
+    };
+
+    const positionStyle: React.CSSProperties = {
+      color: "#A9A9AA",
+      fontFamily: "Montserrat",
+      fontSize: "14px",
+      fontWeight: 600,
+    };
 
     return (
       <section
@@ -150,15 +185,13 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
           position: "relative",
           backgroundColor: "#F7F7F7",
           paddingTop: "100px",
-          border: "3px solid violet",
         }}
       >
         <Container
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "stretch", // Изменено на stretch
-            border: "2px solid",
+            alignItems: "stretch",
             padding: 0,
           }}
         >
@@ -167,7 +200,6 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
             sx={{
               flex: 1,
               maxWidth: "370px",
-              border: "3px solid yellow",
               marginLeft: "0",
             }}
           >
@@ -207,7 +239,6 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
               display: "flex",
               flexDirection: "column",
               paddingLeft: "0",
-              border: "3px solid brown",
               maxWidth: "655px",
             }}
           >
@@ -219,34 +250,42 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
               }}
             >
               <SectionTitle index={4} title={"Testimonial"} />
-              <span>{`${activeIndex + 1}/${slides.length}`}</span>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontFamily: "Anton",
+                  fontSize: "24px",
+                  fontWeight: 400,
+                }}
+              >
+                <span style={activeIndexStyle}>{activeIndex + 1}</span>
+                <span style={inactiveIndexStyle}>{`/${slides.length}`}</span>
+              </Box>
             </Box>
-            {/* New Content Block */}
+
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                marginTop: "48px",
-                marginBottom: "42px",
-                border: "1px solid olive",
-                minHeight:"220px"
+                marginTop: "40px",
+                minHeight: "250px",
               }}
             >
               <Icon iconId="quote" width="21" height="13" />
-              <article style={{ maxWidth: "430px", marginTop: "10px" }}>
+              <article style={articleStyle}>
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                 amet sint. Velit officia consequat duis enim velit mollit.
                 Exercitation veniam consequat sunt nostrud amet.
               </article>
               <div style={{ marginTop: "20px", textAlign: "left" }}>
-                <strong>Esther Howard</strong>
-                <div>CEO of Adebe</div>
+                <div style={nameStyle}>Esther Howard</div>
+                <div style={positionStyle}>CEO of Adebe</div>
               </div>
             </Box>
-            <Box sx={{ flex: 1 }} />{" "}
-            {/* Spacer to push the indicator section to the bottom */}
+            <Box sx={{ flex: 1 }} />
             <Box
               sx={{
                 display: "flex",
@@ -255,7 +294,7 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
                 marginTop: "40px",
               }}
             >
-              <Box sx={{ display: "flex", alignSelf:'flex-end' }}>
+              <Box sx={{ display: "flex" }}>
                 {slides.map((_, index) => (
                   <span
                     key={`indicator-${index}`}
