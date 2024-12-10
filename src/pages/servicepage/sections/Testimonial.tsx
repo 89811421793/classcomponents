@@ -225,7 +225,7 @@ export class Testimonial extends Component<TestimonialProps, TestimonialState> {
                 alignItems: "center",
               }}
             >
-              <SectionTitle index={4} title={"Testimonial"} />
+              <SectionTitle index={3} title={"Testimonial"} />
               <Box
                 sx={{
                   display: "flex",

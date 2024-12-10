@@ -146,13 +146,13 @@ export class PortfolioSection extends Component<
     return (
       <section
         style={{
-          minHeight: "70vh",
+          minHeight: "60vh",
           position: "relative",
           backgroundColor: "#F7F7F7",
           paddingTop: "100px",
         }}
       >
-        <Container sx={{ minHeight: "70vh", position: "relative" }}>
+        <Container sx={{ minHeight: "50vh", position: "relative" }}>
           <Box
             sx={{
               display: "flex",
