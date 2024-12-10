@@ -2,6 +2,7 @@ import { Component } from "react";
 import { PortfolioSlides } from "./sections/PortfolioSlides";
 import { PortfolioTop } from "./sections/PortfolioTop";
 import { PartnersSection } from "../servicepage/sections/PartnersSection";
+import { QuestionsSection } from "./sections/QuestionsSection";
 
 export class Portfolio extends Component {
   render() {
@@ -10,6 +11,7 @@ export class Portfolio extends Component {
         <PortfolioTop />
         <PortfolioSlides />
         <PartnersSection/>
+        <QuestionsSection/>
       </div>
     );
   }
