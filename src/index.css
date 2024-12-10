@@ -94,3 +94,6 @@ button:focus-visible {
   font-display: swap; 
 }
 
+.acc-notopen {
+  transform: rotate(180deg);
+}
