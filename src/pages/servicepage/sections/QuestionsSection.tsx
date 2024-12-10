@@ -4,25 +4,28 @@ import SectionTitle from "../../../components/SectionTitle";
 import { Icon } from "../../../components/Icon";
 
 interface AccordionState {
-  expandedIndex: number | null;
+  expandedIndexes: { [key: number]: boolean }; // Хранит информацию об открытых аккордеонах
 }
 
 export class QuestionsSection extends React.Component<{}, AccordionState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      expandedIndex: null, // Хранит индекс открытого аккордеона
+      expandedIndexes: {}, // Изначально все аккордеоны закрыты
     };
   }
 
   handleToggle = (index: number) => {
     this.setState((prevState) => ({
-      expandedIndex: prevState.expandedIndex === index ? null : index,
+      expandedIndexes: {
+        ...prevState.expandedIndexes,
+        [index]: !prevState.expandedIndexes[index], // Переключаем состояние конкретного аккордеона
+      },
     }));
   };
 
   render() {
-    const { expandedIndex } = this.state;
+    const { expandedIndexes } = this.state;
 
     return (
       <section>
@@ -81,14 +84,14 @@ export class QuestionsSection extends React.Component<{}, AccordionState> {
                 },
               ].map((item) => (
                 <li
-                  key={item.id} // Используем уникальный id вместо index
+                  key={item.id}
                   style={{
                     border:
-                      expandedIndex === item.id ? "none" : "1px solid #DFE2E5",
+                      expandedIndexes[item.id] ? "none" : "1px solid #DFE2E5",
                     marginBottom: "25px",
                     width: "100%",
                     backgroundColor:
-                      expandedIndex === item.id ? "white" : "#F7F7F7",
+                      expandedIndexes[item.id] ? "white" : "#F7F7F7",
                   }}
                 >
                   <div
@@ -114,11 +117,11 @@ export class QuestionsSection extends React.Component<{}, AccordionState> {
                       width="9"
                       height="4"
                       className={
-                        expandedIndex === item.id ? "acc-open" : "acc-notopen"
+                        expandedIndexes[item.id] ? "acc-open" : "acc-notopen"
                       }
                     />
                   </div>
-                  {expandedIndex === item.id && (
+                  {expandedIndexes[item.id] && (
                     <div style={{ backgroundColor: "white", padding: "16px" }}>
                       <Typography
                         sx={{
