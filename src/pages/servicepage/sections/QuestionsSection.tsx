@@ -86,12 +86,14 @@ export class QuestionsSection extends React.Component<{}, AccordionState> {
                 <li
                   key={item.id}
                   style={{
-                    border:
-                      expandedIndexes[item.id] ? "none" : "1px solid #DFE2E5",
+                    border: expandedIndexes[item.id]
+                      ? "none"
+                      : "1px solid #DFE2E5",
                     marginBottom: "25px",
                     width: "100%",
-                    backgroundColor:
-                      expandedIndexes[item.id] ? "white" : "#F7F7F7",
+                    backgroundColor: expandedIndexes[item.id]
+                      ? "white"
+                      : "#F7F7F7",
                   }}
                 >
                   <div
