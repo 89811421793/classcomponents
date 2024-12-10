@@ -1,22 +1,34 @@
 import React from "react";
-import {
-  Container,
-  Box,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@mui/material";
+import { Container, Box, Typography } from "@mui/material";
 import SectionTitle from "../../../components/SectionTitle";
 import { Icon } from "../../../components/Icon";
 
-export class QuestionsSection extends React.Component {
+interface AccordionState {
+  expandedIndex: number | null;
+}
+
+export class QuestionsSection extends React.Component<{}, AccordionState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      expandedIndex: null, // Хранит индекс открытого аккордеона
+    };
+  }
+
+  handleToggle = (index: number) => {
+    this.setState((prevState) => ({
+      expandedIndex: prevState.expandedIndex === index ? null : index,
+    }));
+  };
+
   render() {
+    const { expandedIndex } = this.state;
+
     return (
       <section>
         <Container
           sx={{
-            minHeight: "90vh",
+            minHeight: "80vh",
             backgroundColor: "#F7F7F7",
             paddingTop: "100px",
           }}
@@ -47,101 +59,85 @@ export class QuestionsSection extends React.Component {
               margin: "0 auto",
             }}
           >
-            <Accordion
-              sx={{
-                border: "1px solid #DFE2E5",
-                marginBottom: "25px",
-                width: "100%",
-              }}
-            >
-              <AccordionSummary
-                sx={{
-                  padding: "27px 34px 27px 24px",
-                  justifyContent: "space-between",
-                }}
-                expandIcon={
-                  <Icon
-                    iconId="accarrow"
-                    width="9"
-                    height="5"
-                    className="acc-notopen"
-                  />
-                }
-              >
-                <Typography>Where Can I Find More Information?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat sunt nostrud amet.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              sx={{
-                border: "1px solid #DFE2E5",
-                marginBottom: "25px",
-                width: "100%",
-              }}
-            >
-              <AccordionSummary
-                sx={{
-                  padding: "27px 34px 27px 24px",
-                  justifyContent: "space-between",
-                }}
-                expandIcon={
-                  <Icon
-                    iconId="accarrow"
-                    width="9"
-                    height="5"
-                    className="acc-notopen"
-                  />
-                }
-              >
-                <Typography>What Kinds of Payment Do You Accept?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat sunt nostrud amet.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-              sx={{
-                border: "1px solid #DFE2E5",
-                marginBottom: "25px",
-                width: "100%",
-              }}
-            >
-              <AccordionSummary
-                sx={{
-                  padding: "27px 34px 27px 24px",
-                  justifyContent: "space-between",
-                }}
-                expandIcon={
-                  <Icon
-                    iconId="accarrow"
-                    width="9"
-                    height="5"
-                    className="acc-notopen"
-                  />
-                }
-              >
-                <Typography>What Are Your Terms and Conditions?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit.
-                  Exercitation veniam consequat sunt nostrud amet.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+            <ul style={{ width: "100%" }}>
+              {[
+                {
+                  id: 1,
+                  question: "Where Can I Find More Information?",
+                  answer:
+                    "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                },
+                {
+                  id: 2,
+                  question: "What Kinds of Payment Do You Accept?",
+                  answer:
+                    "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat duis enim velit mollit.",
+                },
+                {
+                  id: 3,
+                  question: "What Are Your Terms and Conditions?",
+                  answer:
+                    "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat duis enim velit mollit.",
+                },
+              ].map((item) => (
+                <li
+                  key={item.id} // Используем уникальный id вместо index
+                  style={{
+                    border:
+                      expandedIndex === item.id ? "none" : "1px solid #DFE2E5",
+                    marginBottom: "25px",
+                    width: "100%",
+                    backgroundColor:
+                      expandedIndex === item.id ? "white" : "#F7F7F7",
+                  }}
+                >
+                  <div
+                    onClick={() => this.handleToggle(item.id)}
+                    style={{
+                      padding: "27px 34px 27px 24px",
+                      cursor: "pointer",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontFamily: "Anton",
+                        fontWeight: 400,
+                        fontSize: "20px",
+                      }}
+                    >
+                      {item.question}
+                    </Typography>
+                    <Icon
+                      iconId="accarrow"
+                      width="9"
+                      height="4"
+                      className={
+                        expandedIndex === item.id ? "acc-open" : "acc-notopen"
+                      }
+                    />
+                  </div>
+                  {expandedIndex === item.id && (
+                    <div style={{ backgroundColor: "white", padding: "16px" }}>
+                      <Typography
+                        sx={{
+                          fontFamily: "Montserrat",
+                          fontWeight: 500,
+                          fontSize: "14px",
+                          lineHeight: "32px",
+                          maxWidth: "664px",
+                          paddingLeft: "8px",
+                          color: "#A9A9AA",
+                        }}
+                      >
+                        {item.answer}
+                      </Typography>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </Box>
         </Container>
       </section>
