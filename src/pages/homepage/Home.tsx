@@ -4,6 +4,7 @@ import { AboutSection } from './sections/AboutSection';
 import { ServiceSection } from './sections/ServiceSection';
 import { PortfolioSection } from './sections/PortfolioSection';
 import { Testimonial } from './sections/Testimonial';
+import { ContactSection } from './sections/ContactSection';
 
 export class Home extends Component {
     render() {
@@ -14,6 +15,7 @@ export class Home extends Component {
                <ServiceSection/>
                <PortfolioSection/>
                <Testimonial/>
+               <ContactSection/>
             </div>
         );
     }

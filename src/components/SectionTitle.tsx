@@ -1,34 +1,43 @@
 import { Component } from "react";
 import { Typography, Box } from "@mui/material";
+import { Theme } from "@mui/material/styles"; // Импортируем тип Theme
 
 interface SectionTitleProps {
   title: string;
   index: number; // Добавляем пропс для порядкового номера
+  sectionBackgroundColor?: string; // Добавляем пропс для цвета фона секции
 }
 
 class SectionTitle extends Component<SectionTitleProps> {
   render() {
-    const { title, index } = this.props;
+    const { title, index, sectionBackgroundColor } = this.props;
+
+    // Определяем цвет текста в зависимости от цвета фона секции
+    const textColor =
+      sectionBackgroundColor === "#111214" || sectionBackgroundColor === "black"
+        ? (theme: Theme) => theme.palette.background.paper // Указываем тип для theme
+        : (theme: Theme) => theme.palette.text.primary; // Указываем тип для theme
+
     return (
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           position: "relative",
-          color: (theme) => theme.palette.text.primary,
+          color: textColor,
           paddingLeft: "70px",
-          paddingTop:'10px',
+          paddingTop: '10px',
 
           "&::before": {
             content: `"${index < 10 ? "0" : ""}${index}"`,
             position: "absolute",
-            top:'-2%',
-            left:'4%',
+            top: '-2%',
+            left: '4%',
             transform: "translateX(-50%)",
             fontFamily: "Anton",
             fontSize: "80px",
             fontWeight: 400,
-            color: (theme) => theme.palette.accent.main,
+            color: (theme: Theme) => theme.palette.accent.main, // Указываем тип для theme
           },
         }}
       >
@@ -39,7 +48,7 @@ class SectionTitle extends Component<SectionTitleProps> {
             fontWeight: 400,
             fontSize: "40px",
             textTransform: "uppercase",
-            display: "inline-block", 
+            display: "inline-block",
             textAlign: "left",
           }}
         >
