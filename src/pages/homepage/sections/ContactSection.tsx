@@ -4,15 +4,18 @@ import { Icon } from "../../../components/Icon";
 import { Socials } from "../../../components/Socials";
 import { Container, Box, Typography, Link, Button } from "@mui/material";
 
-interface ContactSectionProps {}
+type ContactSectionProps = {}
 
-interface ContactSectionState {
+type ContactSectionState = {
   name: string;
   email: string;
   message: string;
 }
 
-export class ContactSection extends React.Component<ContactSectionProps, ContactSectionState> {
+export class ContactSection extends React.Component<
+  ContactSectionProps,
+  ContactSectionState
+> {
   constructor(props: ContactSectionProps) {
     super(props);
     this.state = {
@@ -22,14 +25,18 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
     };
   }
 
-  handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value } as Pick<ContactSectionState, keyof ContactSectionState>);
+    this.setState({ [name]: value } as Pick<
+      ContactSectionState,
+      keyof ContactSectionState
+    >);
   };
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle form submission logic here
     console.log(this.state);
   };
 
@@ -47,7 +54,6 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
             minHeight: "60vh",
             display: "flex",
             justifyContent: "space-between",
-            border: "1px solid white",
           }}
         >
           {/* Левый блок */}
@@ -56,8 +62,7 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
-              gap: "85px",
-              border: "1px solid red",
+              gap: "50px",
             }}
           >
             <SectionTitle
@@ -70,7 +75,7 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                gap: "30px",
+                gap: "48px",
                 mt: 5,
               }}
             >
@@ -170,10 +175,9 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
             sx={{
               display: "flex",
               flexDirection: "column",
-              border: "1px solid red",
               alignItems: "flex-start",
-              gap: '65px',
-              paddingTop: '20px'
+              gap: "65px",
+              paddingTop: "20px",
             }}
           >
             <Typography
@@ -184,6 +188,7 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
                 fontWeight: "400",
                 fontSize: "24px",
                 color: "#fff",
+                marginBottom: "30px",
               }}
             >
               I’m always open to discussing{" "}
@@ -195,82 +200,118 @@ export class ContactSection extends React.Component<ContactSectionProps, Contact
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
-                gridTemplateRows: "auto auto",
                 columnGap: "30px",
-                rowGap: "60px",
-                width: '100%',
-                border: '4px solid yellow'
+                rowGap: "50px",
+                maxWidth: "654px",
+                width: "100%",
               }}
             >
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={this.state.name}
-                onChange={this.handleChange}
+              <label
                 style={{
-                  padding: "20px 16px",
-                  border: "1px solid #A9A9AA",
-                  borderRadius: "4px",
-                  backgroundColor: "#222324",
-                  color: "#FFF",
                   fontFamily: "Montserrat",
+                  fontWeight: "500",
                   fontSize: "14px",
-                }}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={this.state.email}
-                onChange={this.handleChange}
-                style={{
-                  padding: "20px 16px",
-                  border: "1px solid #A9A9AA",
-                  borderRadius: "4px",
-                  backgroundColor: "#222324",
                   color: "#FFF",
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
                 }}
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                value={this.state.message}
-                onChange={this.handleChange}
+              >
+                Your name*
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  style={{
+                    padding: "20px 16px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    backgroundColor: "#CACDD11A",
+                    color: "#FFF",
+                    border: "none",
+                    marginTop: "10px",
+                    fontFamily: "Montserrat",
+                    fontSize: "12px",
+                  }}
+                  placeholder="Enter your name here"
+                />
+              </label>
+              <label
                 style={{
+                  fontFamily: "Montserrat",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  color: "#FFF",
+                }}
+              >
+                Email address*
+                <input
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  style={{
+                    padding: "20px 16px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    backgroundColor: "#CACDD11A",
+                    color: "#FFF",
+                    border: "none",
+                    marginTop: "10px",
+                    fontFamily: "Montserrat",
+                    fontSize: "12px",
+                  }}
+                  placeholder="Enter your email address"
+                />
+              </label>
+              <label
+                style={{
+                  fontFamily: "Montserrat",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  color: "#FFF",
                   gridColumn: "1 / span 2",
-                  padding: "16px",
-                  border: "1px solid #A9A9AA",
-                  borderRadius: "4px",
-                  backgroundColor: "#222324",
-                  color: "#FFF",
-                  fontFamily: "Montserrat",
-                  fontSize: "14px",
-                  resize: "none",
-                  height: "100%",
                 }}
-              />
+              >
+                Message
+                <textarea
+                  name="message"
+                  value={this.state.message}
+                  onChange={this.handleChange}
+                  style={{
+                    padding: "20px 16px",
+                    width: "100%",
+                    height: "124px",
+                    resize: "none",
+                    boxSizing: "border-box",
+                    backgroundColor: "#CACDD11A",
+                    color: "#FFF",
+                    border: "none",
+                    marginTop: "10px",
+                    fontFamily: "Montserrat",
+                    fontSize: "12px",
+                  }}
+                  placeholder="Write your message here"
+                />
+              </label>
               <Button
                 type="submit"
+                variant="contained"
                 sx={{
-                  marginTop: "48px",
+                  alignSelf: "flex-start",
                   padding: "16px 24px",
                   backgroundColor: "#FE390C",
                   color: "#FFF",
-                  fontFamily: "Montserrat",
-                  fontWeight: "500",
-                  fontSize: "16px",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  '&:hover': {
-                    backgroundColor: "#D32F2F",
+                  maxWidth: "fit-content",
+                  "&:hover": {
+                    backgroundColor: "#FE390C",
                   },
+                  borderRadius: "3px",
+                  textTransform: "uppercase",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  fontFamily: "Montserrat",
                 }}
               >
-                SEND MESSAGE
+                Send Message
               </Button>
             </form>
           </Box>
