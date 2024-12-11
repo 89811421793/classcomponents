@@ -7,26 +7,36 @@ import { Container, Box, Typography, Link } from "@mui/material";
 export class ContactSection extends React.Component {
   render() {
     return (
-      <section style={{ backgroundColor: "#111214", minHeight: "80vh", paddingTop:'100px' }}>
+      <section
+        style={{
+          backgroundColor: "#111214",
+          minHeight: "80vh",
+          paddingTop: "100px",
+        }}
+      >
         <Container
           sx={{
             minHeight: "60vh",
             display: "flex",
             justifyContent: "space-between",
-            border:'1px solid white',
+            border: "1px solid white",
           }}
         >
-             
-        {/*Левый блок*/}
+          {/*Левый блок*/}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "flex-start",
+              border: "1px solid red",
             }}
           >
-            <SectionTitle index={5} title="Contact" sectionBackgroundColor="#111214" />
+            <SectionTitle
+              index={5}
+              title="Contact"
+              sectionBackgroundColor="#111214"
+            />
             <Box
               sx={{
                 display: "flex",
@@ -83,10 +93,16 @@ export class ContactSection extends React.Component {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-start",
+              border: "1px solid red",
+              alignItems: "flex-start",
+              width: "fit-content",
             }}
           >
-            <Typography variant="body1" sx={{ mb: 5, maxWidth: "400px" }}>
+            <Typography
+              variant="body1"
+              sx={{ mb: 5, fontFamily:'Anton', fontWeight:'400', fontSize:'24px' }}
+            >
               I’m always open to discussing product design work or partnership
             </Typography>
             <form></form>
