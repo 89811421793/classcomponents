@@ -32,7 +32,7 @@ class SectionTitle extends Component<SectionTitleProps> {
             content: `"${index < 10 ? "0" : ""}${index}"`,
             position: "absolute",
             top: '-2%',
-            left: '4%',
+            left: '7%',
             transform: "translateX(-50%)",
             fontFamily: "Anton",
             fontSize: "80px",
