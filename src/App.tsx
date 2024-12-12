@@ -1,10 +1,10 @@
-import { Home } from "./pages/homepage/Home";
+import { Contacts } from "./pages/contactspage/Contacts";
 import "./reset.css";
 
 function App() {
   return (
     <div>
-      <Home />
+    <Contacts/>
     </div>
   );
 }
