@@ -10,6 +10,7 @@ import s4 from "../../../assets/images/about_img2.png";
 import SwiperCore from "swiper";
 import { PortfolioSlider } from "../../../components/PortfolioSlider";
 
+
 interface PortfolioSectionProps {}
 
 interface PortfolioSectionState {

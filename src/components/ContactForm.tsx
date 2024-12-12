@@ -175,6 +175,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
             fontSize: "12px",
             fontWeight: 600,
             fontFamily: "Montserrat",
+            border:'none',
           }}
         >
           Send Message

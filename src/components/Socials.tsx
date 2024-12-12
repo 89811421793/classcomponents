@@ -5,6 +5,7 @@ import { Icon } from "./Icon";
 interface SocialsProps {
   spacing?: string;
   flexDirection?: "column" | "row";
+  isDarkBackground?: boolean;
 }
 
 // Стилизация списка
@@ -32,12 +33,18 @@ export class Socials extends Component<SocialsProps> {
   render() {
     const spacing = this.props.spacing ?? "32px";
     const flexDirection = this.props.flexDirection ?? "column";
+    const isDarkBackground = this.props.isDarkBackground ?? true;
 
-    const socialLinks = [
+    const socialLinks = isDarkBackground ? [
       { iconId: "instagram" },
       { iconId: "facebook" },
       { iconId: "linkedin" },
       { iconId: "dribble" },
+    ] : [
+      { iconId: "white_insta" },
+      { iconId: "white_fbook" },
+      { iconId: "white_in" },
+      { iconId: "white_drib" },
     ];
 
     return (

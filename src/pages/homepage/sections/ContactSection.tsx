@@ -1,9 +1,9 @@
 import React from "react";
 import SectionTitle from "../../../components/SectionTitle";
-import { Icon } from "../../../components/Icon";
 import { Socials } from "../../../components/Socials";
-import { Container, Box, Typography, Link } from "@mui/material";
+import { Container, Box, Typography } from "@mui/material";
 import ContactForm from "../../../components/ContactForm";
+import { ContactData } from "../../../components/ContactData";
 
 interface ContactLink {
   id: string;
@@ -19,16 +19,24 @@ const contactLinks: ContactLink[] = [
   { id: "address", iconId: "pin", title: "Address", link: "4517 Washington Ave. Manchester, Kentucky 39495", href: "#" },
 ];
 
-export class ContactSection extends React.Component {
+interface ContactSectionProps {
+  sectionBackgroundColor?: string;
+}
+
+export class ContactSection extends React.Component<ContactSectionProps> {
   handleFormSubmit = (data: { name: string; email: string; message: string }) => {
     console.log(data);
   };
 
   render() {
+    const { sectionBackgroundColor = "#111214" } = this.props;
+    const isDarkBackground = ["#111214", "#F7F7F7", "#FFFFFF"].includes(sectionBackgroundColor);
+    const textColor = isDarkBackground ? "#FFF" : "#111214";
+
     return (
       <section
         style={{
-          backgroundColor: "#111214",
+          backgroundColor: sectionBackgroundColor,
           minHeight: "80vh",
           paddingTop: "100px",
         }}
@@ -52,7 +60,7 @@ export class ContactSection extends React.Component {
             <SectionTitle
               index={5}
               title="Contact"
-              sectionBackgroundColor="#111214"
+              sectionBackgroundColor={sectionBackgroundColor}
             />
             <Box
               sx={{
@@ -63,39 +71,8 @@ export class ContactSection extends React.Component {
                 mt: 5,
               }}
             >
-              {/* Ваши контактные данные */}
-              {contactLinks.map((link) => (
-                <Box key={link.id} sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Icon iconId={link.iconId} width="19" height="19" />
-                  <Box sx={{ ml: 2 }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontFamily: "Montserrat",
-                        fontWeight: "500",
-                        fontSize: "16px",
-                        color: "#FFF",
-                      }}
-                    >
-                      {link.title}
-                    </Typography>
-                    <Link
-                      href={link.href}
-                      variant="body1"
-                      sx={{
-                        fontFamily: "Montserrat",
-                        fontWeight: "500",
-                        fontSize: "14px",
-                        textDecoration: "none",
-                        color: "#A9A9AA",
-                      }}
-                    >
-                      {link.link}
-                    </Link>
-                  </Box>
-                </Box>
-              ))}
-              <Socials flexDirection="row" />
+              <ContactData contactLinks={contactLinks} textColor={textColor} sectionBackgroundColor={sectionBackgroundColor} />
+              <Socials flexDirection="row" isDarkBackground={isDarkBackground} />
             </Box>
           </Box>
 
@@ -116,15 +93,14 @@ export class ContactSection extends React.Component {
                 fontFamily: "Anton",
                 fontWeight: "400",
                 fontSize: "24px",
-                color: "#fff",
+                color: textColor,
                 marginBottom: "30px",
               }}
             >
               I’m always open to discussing{" "}
-              <span style={{ color: "#FE390C" }}>product design work</span> or
-              partnership
+              <span style={{ color: "#FE390C" }}>product design work</span> or partnership
             </Typography>
-            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor="#111214" />
+            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor={sectionBackgroundColor} />
           </Box>
         </Container>
       </section>
