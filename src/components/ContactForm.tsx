@@ -38,7 +38,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
   getLabelColor = () => {
     const sectionBackgroundColor = this.props.sectionBackgroundColor;
-    if (sectionBackgroundColor === "#111214" || sectionBackgroundColor === "black") {
+    if (sectionBackgroundColor === "#111214") {
       return "#FFF";
     } else {
       return "#111214";
@@ -47,7 +47,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
   getInputBackgroundColor = () => {
     const sectionBackgroundColor = this.props.sectionBackgroundColor;
-    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
+    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "#FFFFFF") {
       return "#CACDD11A";
     } else {
       return "#CACDD11A";
@@ -56,7 +56,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
   getInputTextColor = () => {
     const sectionBackgroundColor = this.props.sectionBackgroundColor;
-    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
+    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "#FFFFFF") {
       return "#A9A9AA99";
     } else {
       return "#FFF";
@@ -185,4 +185,4 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
   }
 }
 
-export default ContactForm;
+export default ContactForm

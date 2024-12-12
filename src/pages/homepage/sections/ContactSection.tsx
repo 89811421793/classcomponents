@@ -30,7 +30,7 @@ export class ContactSection extends React.Component<ContactSectionProps> {
 
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
-    const isDarkBackground = ["#111214", "#F7F7F7","#000", "#FFFFFF"].includes(sectionBackgroundColor);
+    const isDarkBackground = ["#111214", "#FFFFFF"].includes(sectionBackgroundColor);
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
     return (
@@ -61,7 +61,7 @@ export class ContactSection extends React.Component<ContactSectionProps> {
               index={5}
               title="Contact"
               sectionBackgroundColor={sectionBackgroundColor}
-              overrideIndex={sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white"|| sectionBackgroundColor === "#FFF"? 1 : undefined}
+              overrideIndex={sectionBackgroundColor === "white"|| sectionBackgroundColor === "#FFF"|| sectionBackgroundColor === "#fff"? 1 : undefined}
             />
             <Box
               sx={{

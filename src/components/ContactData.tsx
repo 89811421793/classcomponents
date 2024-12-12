@@ -20,7 +20,7 @@ export class ContactData extends React.Component<ContactDataProps> {
   render() {
     const { contactLinks, textColor, sectionBackgroundColor } = this.props;
 
-    const isLightBackground = ["#F7F7F7", "#FFFFFF"].includes(sectionBackgroundColor);
+    const isLightBackground = ["#FFFFFF"].includes(sectionBackgroundColor);
     const titleColor = isLightBackground ? "#111214" : textColor;
     const linkColor = isLightBackground ? "#A9A9AA" : "#A9A9AA";
 
