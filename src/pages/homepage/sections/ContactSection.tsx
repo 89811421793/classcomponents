@@ -167,7 +167,7 @@ export class ContactSection extends React.Component {
               <span style={{ color: "#FE390C" }}>product design work</span> or
               partnership
             </Typography>
-            <ContactForm onSubmit={this.handleFormSubmit} />
+            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor="#F7F7F7" />
           </Box>
         </Container>
       </section>

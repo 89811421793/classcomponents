@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "@mui/material";
 
 type ContactFormProps = {
   onSubmit: (data: { name: string; email: string; message: string }) => void;
+  sectionBackgroundColor?: string;
 };
 
 type ContactFormState = {
@@ -36,6 +36,33 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
     this.props.onSubmit(this.state);
   };
 
+  getLabelColor = () => {
+    const sectionBackgroundColor = this.props.sectionBackgroundColor;
+    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
+      return "#111214";
+    } else {
+      return "#FFF";
+    }
+  };
+
+  getInputBackgroundColor = () => {
+    const sectionBackgroundColor = this.props.sectionBackgroundColor;
+    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
+      return "#CACDD11A";
+    } else {
+      return "#CACDD11A";
+    }
+  };
+
+  getInputTextColor = () => {
+    const sectionBackgroundColor = this.props.sectionBackgroundColor;
+    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
+      return "#A9A9AA99";
+    } else {
+      return "#FFF";
+    }
+  };
+
   render() {
     return (
       <form
@@ -54,7 +81,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
             fontFamily: "Montserrat",
             fontWeight: "500",
             fontSize: "14px",
-            color: "#FFF",
+            color: this.getLabelColor(),
           }}
         >
           Your name*
@@ -67,8 +94,8 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
               padding: "20px 16px",
               width: "100%",
               boxSizing: "border-box",
-              backgroundColor: "#CACDD11A",
-              color: "#FFF",
+              backgroundColor: this.getInputBackgroundColor(),
+              color: this.getInputTextColor(),
               border: "none",
               marginTop: "10px",
               fontFamily: "Montserrat",
@@ -82,7 +109,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
             fontFamily: "Montserrat",
             fontWeight: "500",
             fontSize: "14px",
-            color: "#FFF",
+            color: this.getLabelColor(),
           }}
         >
           Email address*
@@ -95,8 +122,8 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
               padding: "20px 16px",
               width: "100%",
               boxSizing: "border-box",
-              backgroundColor: "#CACDD11A",
-              color: "#FFF",
+              backgroundColor: this.getInputBackgroundColor(),
+              color: this.getInputTextColor(),
               border: "none",
               marginTop: "10px",
               fontFamily: "Montserrat",
@@ -110,7 +137,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
             fontFamily: "Montserrat",
             fontWeight: "500",
             fontSize: "14px",
-            color: "#FFF",
+            color: this.getLabelColor(),
             gridColumn: "1 / span 2",
           }}
         >
@@ -125,8 +152,8 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
               height: "124px",
               resize: "none",
               boxSizing: "border-box",
-              backgroundColor: "#CACDD11A",
-              color: "#FFF",
+              backgroundColor: this.getInputBackgroundColor(),
+              color: this.getInputTextColor(),
               border: "none",
               marginTop: "10px",
               fontFamily: "Montserrat",
@@ -135,18 +162,14 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
             placeholder="Write your message here"
           />
         </label>
-        <Button
+        <button
           type="submit"
-          variant="contained"
-          sx={{
+          style={{
             alignSelf: "flex-start",
             padding: "16px 24px",
             backgroundColor: "#FE390C",
             color: "#FFF",
             maxWidth: "fit-content",
-            "&:hover": {
-              backgroundColor: "#FE390C",
-            },
             borderRadius: "3px",
             textTransform: "uppercase",
             fontSize: "12px",
@@ -155,7 +178,7 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
           }}
         >
           Send Message
-        </Button>
+        </button>
       </form>
     );
   }
