@@ -5,6 +5,19 @@ import { Socials } from "../../../components/Socials";
 import { Container, Box, Typography, Link } from "@mui/material";
 import ContactForm from "../../../components/ContactForm";
 
+interface ContactLink {
+  id: string;
+  iconId: string;
+  title: string;
+  link: string;
+  href: string;
+}
+
+const contactLinks: ContactLink[] = [
+  { id: "phone", iconId: "phone", title: "Phone", link: "(219) 555-0114", href: "#" },
+  { id: "email", iconId: "email", title: "Email", link: "robertfox@example.com", href: "#" },
+  { id: "address", iconId: "pin", title: "Address", link: "4517 Washington Ave. Manchester, Kentucky 39495", href: "#" },
+];
 
 export class ContactSection extends React.Component {
   handleFormSubmit = (data: { name: string; email: string; message: string }) => {
@@ -51,95 +64,39 @@ export class ContactSection extends React.Component {
               }}
             >
               {/* Ваши контактные данные */}
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <Icon iconId="phone" width="19" height="19" />
-                <Box sx={{ ml: 2 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "16px",
-                      color: "#FFF",
-                    }}
-                  >
-                    Phone
-                  </Typography>
-                  <Link
-                    href="#"
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      textDecoration: "none",
-                      color: "#A9A9AA",
-                    }}
-                  >
-                    (219) 555-0114
-                  </Link>
+              {contactLinks.map((link) => (
+                <Box key={link.id} sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <Icon iconId={link.iconId} width="19" height="19" />
+                  <Box sx={{ ml: 2 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontFamily: "Montserrat",
+                        fontWeight: "500",
+                        fontSize: "16px",
+                        color: "#FFF",
+                      }}
+                    >
+                      {link.title}
+                    </Typography>
+                    <Link
+                      href={link.href}
+                      variant="body1"
+                      sx={{
+                        fontFamily: "Montserrat",
+                        fontWeight: "500",
+                        fontSize: "14px",
+                        textDecoration: "none",
+                        color: "#A9A9AA",
+                      }}
+                    >
+                      {link.link}
+                    </Link>
+                  </Box>
                 </Box>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <Icon iconId="email" width="19" height="19" />
-                <Box sx={{ ml: 2 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "16px",
-                      color: "#FFF",
-                    }}
-                  >
-                    Email
-                  </Typography>
-                  <Link
-                    href="#"
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      textDecoration: "none",
-                      color: "#A9A9AA",
-                    }}
-                  >
-                    robertfox@example.com
-                  </Link>
-                </Box>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                <Icon iconId="pin" width="19" height="19" />
-                <Box sx={{ ml: 2 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "16px",
-                      color: "#FFF",
-                    }}
-                  >
-                    Address
-                  </Typography>
-                  <Link
-                    href="#"
-                    variant="body1"
-                    sx={{
-                      fontFamily: "Montserrat",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      textDecoration: "none",
-                      color: "#A9A9AA",
-                    }}
-                  >
-                    4517 Washington Ave. Manchester, Kentucky 39495
-                  </Link>
-                </Box>
-              </Box>
+              ))}
+              <Socials flexDirection="row" />
             </Box>
-            <Socials flexDirection="row" />
           </Box>
 
           {/* Правый блок */}
@@ -167,7 +124,7 @@ export class ContactSection extends React.Component {
               <span style={{ color: "#FE390C" }}>product design work</span> or
               partnership
             </Typography>
-            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor="#F7F7F7" />
+            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor="#111214" />
           </Box>
         </Container>
       </section>

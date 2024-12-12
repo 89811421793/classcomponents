@@ -38,10 +38,10 @@ class ContactForm extends React.Component<ContactFormProps, ContactFormState> {
 
   getLabelColor = () => {
     const sectionBackgroundColor = this.props.sectionBackgroundColor;
-    if (sectionBackgroundColor === "#F7F7F7" || sectionBackgroundColor === "white") {
-      return "#111214";
-    } else {
+    if (sectionBackgroundColor === "#111214" || sectionBackgroundColor === "black") {
       return "#FFF";
+    } else {
+      return "#111214";
     }
   };
 
