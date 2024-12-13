@@ -8,11 +8,7 @@ interface SocialsProps {
   isDarkBackground?: boolean;
 }
 
-// Стилизация списка
-const StyledList = styled("ul")<{
-  spacing: string;
-  flexDirection: "column" | "row";
-}>(({ spacing, flexDirection }) => ({
+const StyledList = styled("ul")<SocialsProps>(({ spacing, flexDirection }) => ({
   padding: 0,
   margin: 0,
   display: "flex",
@@ -21,7 +17,6 @@ const StyledList = styled("ul")<{
   alignItems: "center",
 }));
 
-// Стилизация элемента списка
 const StyledListItem = styled("li")({
   padding: 0,
   margin: 0,
@@ -31,28 +26,22 @@ const StyledListItem = styled("li")({
 
 export class Socials extends Component<SocialsProps> {
   render() {
-    const spacing = this.props.spacing ?? "32px";
-    const flexDirection = this.props.flexDirection ?? "column";
-    const isDarkBackground = this.props.isDarkBackground ?? true;
+    const {
+      spacing = "32px",
+      flexDirection = "column",
+      isDarkBackground = true,
+    } = this.props;
 
-    const socialLinks = isDarkBackground ? [
-      { iconId: "instagram" },
-      { iconId: "facebook" },
-      { iconId: "linkedin" },
-      { iconId: "dribble" },
-    ] : [
-      { iconId: "white_insta" },
-      { iconId: "white_fbook" },
-      { iconId: "white_in" },
-      { iconId: "white_drib" },
-    ];
+    const socialLinks = isDarkBackground
+      ? ["instagram", "facebook", "linkedin", "dribble"]
+      : ["white_insta", "white_fbook", "white_in", "white_drib"];
 
     return (
       <StyledList spacing={spacing} flexDirection={flexDirection}>
-        {socialLinks.map((link) => (
-          <StyledListItem key={link.iconId}>
+        {socialLinks.map((iconId) => (
+          <StyledListItem key={iconId}>
             <a href="#" target="_blank" rel="noopener noreferrer">
-              <Icon iconId={link.iconId} width="42" height="42" />
+              <Icon iconId={iconId} width="42" height="42" />
             </a>
           </StyledListItem>
         ))}

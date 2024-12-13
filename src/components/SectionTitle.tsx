@@ -15,7 +15,9 @@ class SectionTitle extends Component<SectionTitleProps> {
 
     // Определяем цвет текста в зависимости от цвета фона секции
     const textColor =
-      sectionBackgroundColor === "#111214" ? (theme: Theme) => theme.palette.background.paper : (theme: Theme) => theme.palette.text.primary;
+      sectionBackgroundColor === "#111214"
+        ? (theme: Theme) => theme.palette.background.paper
+        : (theme: Theme) => theme.palette.text.primary;
 
     return (
       <Box
@@ -25,13 +27,17 @@ class SectionTitle extends Component<SectionTitleProps> {
           position: "relative",
           color: textColor,
           paddingLeft: "70px",
-          paddingTop: '10px',
+          paddingTop: "10px",
 
           "&::before": {
-            content: `"${(overrideIndex !== undefined ? overrideIndex : index) < 10 ? "0" : ""}${overrideIndex !== undefined ? overrideIndex : index}"`,
+            content: `"${
+              (overrideIndex !== undefined ? overrideIndex : index) < 10
+                ? "0"
+                : ""
+            }${overrideIndex !== undefined ? overrideIndex : index}"`,
             position: "absolute",
-            top: '-2%',
-            left: '7%',
+            top: "-2%",
+            left: "7%",
             transform: "translateX(-50%)",
             fontFamily: "Anton",
             fontSize: "80px",

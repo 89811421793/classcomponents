@@ -2,13 +2,12 @@ import { Component } from "react";
 import SectionTitle from "../../../components/SectionTitle";
 import { Container,Box } from "@mui/material";
 import { styled } from "@mui/system";
-import { ContactSection } from "../../homepage/sections/ContactSection";
 
 export class Location extends Component {
   render() {
     return (
       <section>
-        <ContactSection sectionBackgroundColor='white'/>
+       
         <StyledContainer>
           <Box sx={{display:'flex', justifyContent:'flex-start'}}>
           <SectionTitle index={2} title="Location" />

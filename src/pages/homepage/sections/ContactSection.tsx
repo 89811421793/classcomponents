@@ -14,9 +14,27 @@ interface ContactLink {
 }
 
 const contactLinks: ContactLink[] = [
-  { id: "phone", iconId: "phone", title: "Phone", link: "(219) 555-0114", href: "#" },
-  { id: "email", iconId: "email", title: "Email", link: "robertfox@example.com", href: "#" },
-  { id: "address", iconId: "pin", title: "Address", link: "4517 Washington Ave. Manchester, Kentucky 39495", href: "#" },
+  {
+    id: "phone",
+    iconId: "phone",
+    title: "Phone",
+    link: "(219) 555-0114",
+    href: "#",
+  },
+  {
+    id: "email",
+    iconId: "email",
+    title: "Email",
+    link: "robertfox@example.com",
+    href: "#",
+  },
+  {
+    id: "address",
+    iconId: "pin",
+    title: "Address",
+    link: "4517 Washington Ave. Manchester, Kentucky 39495",
+    href: "#",
+  },
 ];
 
 interface ContactSectionProps {
@@ -24,13 +42,19 @@ interface ContactSectionProps {
 }
 
 export class ContactSection extends React.Component<ContactSectionProps> {
-  handleFormSubmit = (data: { name: string; email: string; message: string }) => {
+  handleFormSubmit = (data: {
+    name: string;
+    email: string;
+    message: string;
+  }) => {
     console.log(data);
   };
 
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
-    const isDarkBackground = ["#111214", "#FFFFFF"].includes(sectionBackgroundColor);
+    const isDarkBackground = ["#111214", "#FFFFFF"].includes(
+      sectionBackgroundColor
+    );
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
     return (
@@ -48,7 +72,6 @@ export class ContactSection extends React.Component<ContactSectionProps> {
             justifyContent: "space-between",
           }}
         >
-          {/* Левый блок */}
           <Box
             sx={{
               display: "flex",
@@ -61,7 +84,11 @@ export class ContactSection extends React.Component<ContactSectionProps> {
               index={5}
               title="Contact"
               sectionBackgroundColor={sectionBackgroundColor}
-              overrideIndex={sectionBackgroundColor === "white"|| sectionBackgroundColor === "#FFF"|| sectionBackgroundColor === "#fff"? 1 : undefined}
+              overrideIndex={
+                ["white", "#FFF", "#fff"].includes(sectionBackgroundColor)
+                  ? 1
+                  : undefined
+              }
             />
             <Box
               sx={{
@@ -72,12 +99,17 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 mt: 5,
               }}
             >
-              <ContactData contactLinks={contactLinks} textColor={textColor} sectionBackgroundColor={sectionBackgroundColor} />
-              <Socials flexDirection="row" isDarkBackground={isDarkBackground} />
+              <ContactData
+                contactLinks={contactLinks}
+                textColor={textColor}
+                sectionBackgroundColor={sectionBackgroundColor}
+              />
+              <Socials
+                flexDirection="row"
+                isDarkBackground={isDarkBackground}
+              />
             </Box>
           </Box>
-
-          {/* Правый блок */}
           <Box
             sx={{
               display: "flex",
@@ -99,9 +131,13 @@ export class ContactSection extends React.Component<ContactSectionProps> {
               }}
             >
               I’m always open to discussing{" "}
-              <span style={{ color: "#FE390C" }}>product design work</span> or partnership
+              <span style={{ color: "#FE390C" }}>product design work</span> or
+              partnership
             </Typography>
-            <ContactForm onSubmit={this.handleFormSubmit} sectionBackgroundColor={sectionBackgroundColor} />
+            <ContactForm
+              onSubmit={this.handleFormSubmit}
+              sectionBackgroundColor={sectionBackgroundColor}
+            />
           </Box>
         </Container>
       </section>
