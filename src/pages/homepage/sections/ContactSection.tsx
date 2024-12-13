@@ -57,6 +57,19 @@ export class ContactSection extends React.Component<ContactSectionProps> {
     console.log(data);
   };
 
+  renderWithContext = (renderFn: (context: ContactContextType) => React.ReactNode) => {
+    return (
+      <ContactContext.Consumer>
+        {context => {
+          if (!context) {
+            return null; // обработка случая, когда контекст неопределен
+          }
+          return renderFn(context);
+        }}
+      </ContactContext.Consumer>
+    );
+  };
+
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
     const isDarkBackground = ["#111214", "#FFFFFF"].includes(sectionBackgroundColor);
@@ -86,21 +99,14 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 gap: "50px",
               }}
             >
-              <ContactContext.Consumer>
-                {context => {
-                  if (!context) {
-                    return null; // обработка случая, когда контекст неопределен
-                  }
-                  return (
-                    <SectionTitle
-                      index={5}
-                      title="Contact"
-                      sectionBackgroundColor={context.sectionBackgroundColor}
-                      overrideIndex={["white", "#FFF", "#fff"].includes(context.sectionBackgroundColor) ? 1 : undefined}
-                    />
-                  );
-                }}
-              </ContactContext.Consumer>
+              {this.renderWithContext(({ sectionBackgroundColor }) => (
+                <SectionTitle
+                  index={5}
+                  title="Contact"
+                  sectionBackgroundColor={sectionBackgroundColor}
+                  overrideIndex={["white", "#FFF", "#fff"].includes(sectionBackgroundColor) ? 1 : undefined}
+                />
+              ))}
               <Box
                 sx={{
                   display: "flex",
@@ -110,33 +116,19 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                   mt: 5,
                 }}
               >
-                <ContactContext.Consumer>
-                  {context => {
-                    if (!context) {
-                      return null; // обработка случая, когда контекст неопределен
-                    }
-                    return (
-                      <ContactData
-                        contactLinks={contactLinks}
-                        textColor={context.textColor}
-                        sectionBackgroundColor={context.sectionBackgroundColor}
-                      />
-                    );
-                  }}
-                </ContactContext.Consumer>
-                <ContactContext.Consumer>
-                  {context => {
-                    if (!context) {
-                      return null; // обработка случая, когда контекст неопределен
-                    }
-                    return (
-                      <Socials
-                        flexDirection="row"
-                        isDarkBackground={isDarkBackground}
-                      />
-                    );
-                  }}
-                </ContactContext.Consumer>
+                {this.renderWithContext(({ textColor, sectionBackgroundColor }) => (
+                  <ContactData
+                    contactLinks={contactLinks}
+                    textColor={textColor}
+                    sectionBackgroundColor={sectionBackgroundColor}
+                  />
+                ))}
+                {this.renderWithContext(() => (
+                  <Socials
+                    flexDirection="row"
+                    isDarkBackground={isDarkBackground}
+                  />
+                ))}
               </Box>
             </Box>
             <Box
@@ -148,43 +140,29 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 paddingTop: "20px",
               }}
             >
-              <ContactContext.Consumer>
-                {context => {
-                  if (!context) {
-                    return null; // обработка случая, когда контекст неопределен
-                  }
-                  return (
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        mb: 5,
-                        fontFamily: "Anton",
-                        fontWeight: "400",
-                        fontSize: "24px",
-                        color: context.textColor,
-                        marginBottom: "30px",
-                      }}
-                    >
-                      I’m always open to discussing{" "}
-                      <span style={{ color: "#FE390C" }}>product design work</span> or
-                      partnership
-                    </Typography>
-                  );
-                }}
-              </ContactContext.Consumer>
-              <ContactContext.Consumer>
-                {context => {
-                  if (!context) {
-                    return null; // обработка случая, когда контекст неопределен
-                  }
-                  return (
-                    <ContactForm
-                      onSubmit={this.handleFormSubmit}
-                      sectionBackgroundColor={context.sectionBackgroundColor}
-                    />
-                  );
-                }}
-              </ContactContext.Consumer>
+              {this.renderWithContext(({ textColor }) => (
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 5,
+                    fontFamily: "Anton",
+                    fontWeight: "400",
+                    fontSize: "24px",
+                    color: textColor,
+                    marginBottom: "30px",
+                  }}
+                >
+                  I’m always open to discussing{" "}
+                  <span style={{ color: "#FE390C" }}>product design work</span> or
+                  partnership
+                </Typography>
+              ))}
+              {this.renderWithContext(({ sectionBackgroundColor }) => (
+                <ContactForm
+                  onSubmit={this.handleFormSubmit}
+                  sectionBackgroundColor={sectionBackgroundColor}
+                />
+              ))}
             </Box>
           </Container>
         </section>
