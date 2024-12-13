@@ -42,15 +42,15 @@ interface ContactContextType {
   textColor: string;
 }
 
-const ContactContext = React.createContext<ContactContextType | undefined>(
-  undefined
-);
+const ContactContext = React.createContext<ContactContextType | undefined>(undefined);
 
 interface ContactSectionProps {
   sectionBackgroundColor?: string;
 }
 
 export class ContactSection extends React.Component<ContactSectionProps> {
+  static contextType = ContactContext; // Устанавливаем контекст
+
   handleFormSubmit = (data: {
     name: string;
     email: string;
@@ -61,9 +61,7 @@ export class ContactSection extends React.Component<ContactSectionProps> {
 
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
-    const isDarkBackground = ["#111214", "#FFFFFF"].includes(
-      sectionBackgroundColor
-    );
+    const isDarkBackground = ["#111214", "#FFFFFF"].includes(sectionBackgroundColor);
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
     const contextValue = { sectionBackgroundColor, textColor };
@@ -96,13 +94,7 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 index={5}
                 title="Contact"
                 sectionBackgroundColor={contextValue.sectionBackgroundColor}
-                overrideIndex={
-                  ["white", "#FFF", "#fff"].includes(
-                    contextValue.sectionBackgroundColor
-                  )
-                    ? 1
-                    : undefined
-                }
+                overrideIndex={["white", "#FFF", "#fff"].includes(contextValue.sectionBackgroundColor) ? 1 : undefined}
               />
               <Box
                 sx={{
