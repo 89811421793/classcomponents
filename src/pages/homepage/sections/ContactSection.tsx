@@ -42,7 +42,9 @@ interface ContactContextType {
   textColor: string;
 }
 
-const ContactContext = React.createContext<ContactContextType | undefined>(undefined);
+const ContactContext = React.createContext<ContactContextType | undefined>(
+  undefined
+);
 
 interface ContactSectionProps {
   sectionBackgroundColor?: string;
@@ -57,10 +59,12 @@ export class ContactSection extends React.Component<ContactSectionProps> {
     console.log(data);
   };
 
-  renderWithContext = (renderFn: (context: ContactContextType) => React.ReactNode) => {
+  renderWithContext = (
+    renderFn: (context: ContactContextType) => React.ReactNode
+  ) => {
     return (
       <ContactContext.Consumer>
-        {context => {
+        {(context) => {
           if (!context) {
             return null; // обработка случая, когда контекст неопределен
           }
@@ -72,7 +76,9 @@ export class ContactSection extends React.Component<ContactSectionProps> {
 
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
-    const isDarkBackground = ["#111214", "#FFFFFF"].includes(sectionBackgroundColor);
+    const isDarkBackground = ["#111214", "#FFFFFF"].includes(
+      sectionBackgroundColor
+    );
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
     return (
@@ -104,7 +110,11 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                   index={5}
                   title="Contact"
                   sectionBackgroundColor={sectionBackgroundColor}
-                  overrideIndex={["white", "#FFF", "#fff"].includes(sectionBackgroundColor) ? 1 : undefined}
+                  overrideIndex={
+                    ["white", "#FFF", "#fff"].includes(sectionBackgroundColor)
+                      ? 1
+                      : undefined
+                  }
                 />
               ))}
               <Box
@@ -116,13 +126,15 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                   mt: 5,
                 }}
               >
-                {this.renderWithContext(({ textColor, sectionBackgroundColor }) => (
-                  <ContactData
-                    contactLinks={contactLinks}
-                    textColor={textColor}
-                    sectionBackgroundColor={sectionBackgroundColor}
-                  />
-                ))}
+                {this.renderWithContext(
+                  ({ textColor, sectionBackgroundColor }) => (
+                    <ContactData
+                      contactLinks={contactLinks}
+                      textColor={textColor}
+                      sectionBackgroundColor={sectionBackgroundColor}
+                    />
+                  )
+                )}
                 {this.renderWithContext(() => (
                   <Socials
                     flexDirection="row"
@@ -153,8 +165,8 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                   }}
                 >
                   I’m always open to discussing{" "}
-                  <span style={{ color: "#FE390C" }}>product design work</span> or
-                  partnership
+                  <span style={{ color: "#FE390C" }}>product design work</span>{" "}
+                  or partnership
                 </Typography>
               ))}
               {this.renderWithContext(({ sectionBackgroundColor }) => (
