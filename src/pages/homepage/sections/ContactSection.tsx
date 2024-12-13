@@ -153,8 +153,9 @@ export class ContactSection extends React.Component<ContactSectionProps> {
 }
 
 
+//Первый вариант (static contextType = ContactContext позволяет использовать this.context для доступа к значению контекста.)
 
-//Второй вариант
+//Второй вариант(Создает значение контекста один раз в render, а затем передает его в компоненты напрямую.)
 {/*
   import React from "react";
 import SectionTitle from "../../../components/SectionTitle";
@@ -309,7 +310,7 @@ export class ContactSection extends React.Component<ContactSectionProps> {
 } 
 */}
 
-//Третий вариант (Consumer)
+//Третий вариант (Consumer: Использует ContactContext.Consumer для получения значения контекста в нескольких местах компонента, несколько раз вызываем renderWithContext)
 {/*
   ContactSection.tsx:
 import React from "react";
