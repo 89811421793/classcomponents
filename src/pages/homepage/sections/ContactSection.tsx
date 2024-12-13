@@ -59,21 +59,6 @@ export class ContactSection extends React.Component<ContactSectionProps> {
     console.log(data);
   };
 
-  renderWithContext = (
-    renderFn: (context: ContactContextType) => React.ReactNode
-  ) => {
-    return (
-      <ContactContext.Consumer>
-        {(context) => {
-          if (!context) {
-            return null; // обработка случая, когда контекст неопределен
-          }
-          return renderFn(context);
-        }}
-      </ContactContext.Consumer>
-    );
-  };
-
   render() {
     const { sectionBackgroundColor = "#111214" } = this.props;
     const isDarkBackground = ["#111214", "#FFFFFF"].includes(
@@ -81,8 +66,10 @@ export class ContactSection extends React.Component<ContactSectionProps> {
     );
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
+    const contextValue = { sectionBackgroundColor, textColor };
+
     return (
-      <ContactContext.Provider value={{ sectionBackgroundColor, textColor }}>
+      <ContactContext.Provider value={contextValue}>
         <section
           style={{
             backgroundColor: sectionBackgroundColor,
@@ -105,18 +92,18 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 gap: "50px",
               }}
             >
-              {this.renderWithContext(({ sectionBackgroundColor }) => (
-                <SectionTitle
-                  index={5}
-                  title="Contact"
-                  sectionBackgroundColor={sectionBackgroundColor}
-                  overrideIndex={
-                    ["white", "#FFF", "#fff"].includes(sectionBackgroundColor)
-                      ? 1
-                      : undefined
-                  }
-                />
-              ))}
+              <SectionTitle
+                index={5}
+                title="Contact"
+                sectionBackgroundColor={contextValue.sectionBackgroundColor}
+                overrideIndex={
+                  ["white", "#FFF", "#fff"].includes(
+                    contextValue.sectionBackgroundColor
+                  )
+                    ? 1
+                    : undefined
+                }
+              />
               <Box
                 sx={{
                   display: "flex",
@@ -126,21 +113,15 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                   mt: 5,
                 }}
               >
-                {this.renderWithContext(
-                  ({ textColor, sectionBackgroundColor }) => (
-                    <ContactData
-                      contactLinks={contactLinks}
-                      textColor={textColor}
-                      sectionBackgroundColor={sectionBackgroundColor}
-                    />
-                  )
-                )}
-                {this.renderWithContext(() => (
-                  <Socials
-                    flexDirection="row"
-                    isDarkBackground={isDarkBackground}
-                  />
-                ))}
+                <ContactData
+                  contactLinks={contactLinks}
+                  textColor={contextValue.textColor}
+                  sectionBackgroundColor={contextValue.sectionBackgroundColor}
+                />
+                <Socials
+                  flexDirection="row"
+                  isDarkBackground={isDarkBackground}
+                />
               </Box>
             </Box>
             <Box
@@ -152,29 +133,25 @@ export class ContactSection extends React.Component<ContactSectionProps> {
                 paddingTop: "20px",
               }}
             >
-              {this.renderWithContext(({ textColor }) => (
-                <Typography
-                  variant="body1"
-                  sx={{
-                    mb: 5,
-                    fontFamily: "Anton",
-                    fontWeight: "400",
-                    fontSize: "24px",
-                    color: textColor,
-                    marginBottom: "30px",
-                  }}
-                >
-                  I’m always open to discussing{" "}
-                  <span style={{ color: "#FE390C" }}>product design work</span>{" "}
-                  or partnership
-                </Typography>
-              ))}
-              {this.renderWithContext(({ sectionBackgroundColor }) => (
-                <ContactForm
-                  onSubmit={this.handleFormSubmit}
-                  sectionBackgroundColor={sectionBackgroundColor}
-                />
-              ))}
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 5,
+                  fontFamily: "Anton",
+                  fontWeight: "400",
+                  fontSize: "24px",
+                  color: contextValue.textColor,
+                  marginBottom: "30px",
+                }}
+              >
+                I’m always open to discussing{" "}
+                <span style={{ color: "#FE390C" }}>product design work</span> or
+                partnership
+              </Typography>
+              <ContactForm
+                onSubmit={this.handleFormSubmit}
+                sectionBackgroundColor={contextValue.sectionBackgroundColor}
+              />
             </Box>
           </Container>
         </section>
