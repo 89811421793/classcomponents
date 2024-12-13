@@ -37,6 +37,15 @@ const contactLinks: ContactLink[] = [
   },
 ];
 
+// Определяем интерфейс для значений контекста
+interface ContactContextType {
+  sectionBackgroundColor: string;
+  textColor: string;
+}
+
+// Создаем контекст с типом
+const ContactContext = React.createContext<ContactContextType | undefined>(undefined);
+
 interface ContactSectionProps {
   sectionBackgroundColor?: string;
 }
@@ -58,89 +67,101 @@ export class ContactSection extends React.Component<ContactSectionProps> {
     const textColor = isDarkBackground ? "#FFF" : "#111214";
 
     return (
-      <section
-        style={{
-          backgroundColor: sectionBackgroundColor,
-          minHeight: "80vh",
-          paddingTop: "100px",
-        }}
-      >
-        <Container
-          sx={{
-            minHeight: "60vh",
-            display: "flex",
-            justifyContent: "space-between",
+      <ContactContext.Provider value={{ sectionBackgroundColor, textColor }}>
+        <section
+          style={{
+            backgroundColor: sectionBackgroundColor,
+            minHeight: "80vh",
+            paddingTop: "100px",
           }}
         >
-          <Box
+          <Container
             sx={{
+              minHeight: "60vh",
               display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "50px",
+              justifyContent: "space-between",
             }}
           >
-            <SectionTitle
-              index={5}
-              title="Contact"
-              sectionBackgroundColor={sectionBackgroundColor}
-              overrideIndex={
-                ["white", "#FFF", "#fff"].includes(sectionBackgroundColor)
-                  ? 1
-                  : undefined
-              }
-            />
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                gap: "48px",
-                mt: 5,
+                gap: "50px",
               }}
             >
-              <ContactData
-                contactLinks={contactLinks}
-                textColor={textColor}
+              <SectionTitle
+                index={5}
+                title="Contact"
+                sectionBackgroundColor={sectionBackgroundColor}
+                overrideIndex={
+                  ["white", "#FFF", "#fff"].includes(sectionBackgroundColor)
+                    ? 1
+                    : undefined
+                }
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: "48px",
+                  mt: 5,
+                }}
+              >
+                <ContactContext.Consumer>
+                  {context => {
+                    if (!context) {
+                      return null; // или обработка случая, когда контекст неопределен
+                    }
+                    const { textColor, sectionBackgroundColor } = context;
+                    return (
+                      <ContactData
+                        contactLinks={contactLinks}
+                        textColor={textColor}
+                        sectionBackgroundColor={sectionBackgroundColor}
+                      />
+                    );
+                  }}
+                </ContactContext.Consumer>
+                <Socials
+                  flexDirection="row"
+                  isDarkBackground={isDarkBackground}
+                />
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "65px",
+                paddingTop: "20px",
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 5,
+                  fontFamily: "Anton",
+                  fontWeight: "400",
+                  fontSize: "24px",
+                  color: textColor,
+                  marginBottom: "30px",
+                }}
+              >
+                I’m always open to discussing{" "}
+                <span style={{ color: "#FE390C" }}>product design work</span> or
+                partnership
+              </Typography>
+              <ContactForm
+                onSubmit={this.handleFormSubmit}
                 sectionBackgroundColor={sectionBackgroundColor}
               />
-              <Socials
-                flexDirection="row"
-                isDarkBackground={isDarkBackground}
-              />
             </Box>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "65px",
-              paddingTop: "20px",
-            }}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                mb: 5,
-                fontFamily: "Anton",
-                fontWeight: "400",
-                fontSize: "24px",
-                color: textColor,
-                marginBottom: "30px",
-              }}
-            >
-              I’m always open to discussing{" "}
-              <span style={{ color: "#FE390C" }}>product design work</span> or
-              partnership
-            </Typography>
-            <ContactForm
-              onSubmit={this.handleFormSubmit}
-              sectionBackgroundColor={sectionBackgroundColor}
-            />
-          </Box>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      </ContactContext.Provider>
     );
   }
 }
