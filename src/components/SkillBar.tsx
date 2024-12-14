@@ -14,9 +14,25 @@ export class SkillBar extends Component<SkillBarProps> {
       <Box sx={{ marginTop: "40px" }}>
         <Typography
           variant="body1"
-          sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}
+          sx={{
+            mb: 1,
+            display: "flex",
+            justifyContent: "space-between",
+            color: "#111214",
+            fontFamily: "Montserrat",
+            fontSize: "14px",
+            fontWeight: 600,
+          }}
         >
-          {skillName} <span>{percentage}%</span>
+          {skillName} 
+          <span style={{
+            color: "#111214",
+            fontFamily: "Montserrat",
+            fontSize: "14px",
+            fontWeight: 600,
+          }}>
+            {percentage}%
+          </span>
         </Typography>
         <Box
           sx={{

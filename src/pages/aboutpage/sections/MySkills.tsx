@@ -3,11 +3,8 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import SectionTitle from "../../../components/SectionTitle";
 import { SkillBar } from "../../../components/SkillBar";
 
-type MySkillsProps = {};
 
-type MySkillsState = {};
-
-export class MySkills extends Component<MySkillsProps, MySkillsState> {
+export class MySkills extends Component {
   skills = [
     { id: 1, name: "UI/UX Design", percentage: 90 },
     { id: 2, name: "Front End Developer", percentage: 95 },

@@ -14,7 +14,7 @@ export class AboutMeSection extends React.Component<AboutMeSectionProps> {
   render() {
     return (
       <section style={{ minHeight: "100vh"}}>
-        <Container>
+        <Container sx={{marginTop:'40px'}}>
           <LeftBlock>
             <img
               src={designAboutImage}
