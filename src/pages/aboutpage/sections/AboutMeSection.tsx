@@ -97,14 +97,14 @@ const RightBlock = styled(Box)({
   alignItems: "flex-start",
 });
 
-const StyledArticle = styled("article")({
+const StyledArticle = styled("article")(({ theme }) => ({
   marginTop: "20px",
   maxWidth: "558px",
   marginBottom: "35px",
   fontWeight: "500",
   fontSize: "14px",
-  color: "text.secondary",
-});
+  color: theme.palette.text.secondary,
+}));
 
 const StyledTypography = styled(Typography)({
   fontFamily: "Montserrat",
