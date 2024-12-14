@@ -9,14 +9,14 @@ import { ContactSection } from './sections/ContactSection';
 export class Home extends Component {
     render() {
         return (
-            <div>
+            <>
                <Hero/>
                <AboutSection/>
                <ServiceSection/>
                <PortfolioSection/>
                <Testimonial/>
                <ContactSection/>
-            </div>
+            </>
         );
     }
 }
