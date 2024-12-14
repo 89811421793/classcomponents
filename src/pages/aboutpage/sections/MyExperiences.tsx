@@ -7,7 +7,9 @@ export class MyExperiences extends Component {
     return (
       <section style={{ minHeight: "80vh"}}>
         <Container>
-            experiences here
+            <Box sx={{display:'flex', justifyContent:'center', marginTop:'10%'}}>
+              <SectionTitle index={3} title={'My Experiences'}/>
+            </Box>
         </Container>
       </section>
     );
