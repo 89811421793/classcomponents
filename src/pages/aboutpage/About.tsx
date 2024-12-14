@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AboutTop } from './sections/AboutTop';
 import { PartnersSection } from './sections/PartnersSection';
 import { AboutMeSection } from './sections/AboutMeSection';
-import { MySKills } from './sections/MySkills';
+import { MySkills} from './sections/MySkills';
 import { MyExperiences } from './sections/MyExperiences';
 
 export class About extends Component {
@@ -11,7 +11,7 @@ export class About extends Component {
             <React.Fragment>
              <AboutTop/>
              <AboutMeSection/>
-             <MySKills/>
+             <MySkills/>
              <MyExperiences/>
              <PartnersSection/>
             </React.Fragment>

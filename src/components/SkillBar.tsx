@@ -11,7 +11,7 @@ export class SkillBar extends Component<SkillBarProps> {
     const { skillName, percentage } = this.props;
 
     return (
-      <Box sx={{ width: "558px", mb: 2 }}>
+      <Box sx={{ marginTop: "40px" }}>
         <Typography
           variant="body1"
           sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}
@@ -20,11 +20,10 @@ export class SkillBar extends Component<SkillBarProps> {
         </Typography>
         <Box
           sx={{
-            width: "100%",
+            minWidth: "480px",
             height: "6px",
             backgroundColor: "#DDDEE0",
             borderRadius: "4px",
-            overflow: "hidden",
             position: "relative",
           }}
         >

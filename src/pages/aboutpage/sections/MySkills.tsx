@@ -29,7 +29,6 @@ export class MySkills extends Component<MySkillsProps, MySkillsState> {
             minHeight: "50vh",
             display: "flex",
             justifyContent: "space-between",
-            border: "2px ridge navy",
           }}
         >
           <Box
@@ -37,8 +36,7 @@ export class MySkills extends Component<MySkillsProps, MySkillsState> {
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
-              justifyContent: "space-between",
-              border: "2px dotted forestgreen",
+              gap: "50px",
             }}
           >
             <SectionTitle index={2} title={"My Skills"} />
@@ -49,7 +47,7 @@ export class MySkills extends Component<MySkillsProps, MySkillsState> {
                 fontSize: "14px",
                 fontWeight: 500,
                 lineHeight: "32px",
-                maxWidth: "485px",
+                maxWidth: "500px",
               }}
             >
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
@@ -72,13 +70,7 @@ export class MySkills extends Component<MySkillsProps, MySkillsState> {
             </Button>
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              border: "2px dotted forestgreen",
-            }}
-          >
+          <Box>
             {this.skills.map((skill) => (
               <SkillBar
                 key={skill.id}
