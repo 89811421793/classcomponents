@@ -7,7 +7,14 @@ type MySkillsProps = {};
 
 type MySkillsState = {};
 
-export class MySKills extends Component<MySkillsProps, MySkillsState> {
+export class MySkills extends Component<MySkillsProps, MySkillsState> {
+  skills = [
+    { id: 1, name: "UI/UX Design", percentage: 90 },
+    { id: 2, name: "Front End Developer", percentage: 95 },
+    { id: 3, name: "Graphic Design", percentage: 90 },
+    { id: 4, name: "Product Design", percentage: 85 },
+  ];
+
   render() {
     return (
       <section
@@ -30,7 +37,7 @@ export class MySKills extends Component<MySkillsProps, MySkillsState> {
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
-              justifyContent:'space-between',
+              justifyContent: "space-between",
               border: "2px dotted forestgreen",
             }}
           >
@@ -42,10 +49,12 @@ export class MySKills extends Component<MySkillsProps, MySkillsState> {
                 fontSize: "14px",
                 fontWeight: 500,
                 lineHeight: "32px",
-                maxWidth:'485px'
+                maxWidth: "485px",
               }}
             >
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+              Exercitation veniam consequat sunt nostrud amet.
             </Typography>
             <Button
               sx={{
@@ -55,8 +64,8 @@ export class MySKills extends Component<MySkillsProps, MySkillsState> {
                 fontFamily: "Montserrat",
                 fontSize: "12px",
                 fontWeight: 600,
-                backgroundColor: "#FE390C", 
-                borderRadius:'3px'
+                backgroundColor: "#FE390C",
+                borderRadius: "3px",
               }}
             >
               Download CV
@@ -70,10 +79,13 @@ export class MySKills extends Component<MySkillsProps, MySkillsState> {
               border: "2px dotted forestgreen",
             }}
           >
-             <SkillBar skillName="UI/UX Design" percentage={90} />
-            <SkillBar skillName="Front End Developer" percentage={95} />
-            <SkillBar skillName="Graphic Design" percentage={90} />
-            <SkillBar skillName="Product Design" percentage={85} />
+            {this.skills.map((skill) => (
+              <SkillBar
+                key={skill.id}
+                skillName={skill.name}
+                percentage={skill.percentage}
+              />
+            ))}
           </Box>
         </Container>
       </section>

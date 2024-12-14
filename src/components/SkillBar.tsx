@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Box, Typography } from "@mui/material";
 
 type SkillBarProps = {
@@ -12,13 +12,16 @@ export class SkillBar extends Component<SkillBarProps> {
 
     return (
       <Box sx={{ width: "558px", mb: 2 }}>
-        <Typography variant="body1" sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}>
+        <Typography
+          variant="body1"
+          sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}
+        >
           {skillName} <span>{percentage}%</span>
         </Typography>
         <Box
           sx={{
             width: "100%",
-            height: "24px",
+            height: "6px",
             backgroundColor: "#DDDEE0",
             borderRadius: "4px",
             overflow: "hidden",
