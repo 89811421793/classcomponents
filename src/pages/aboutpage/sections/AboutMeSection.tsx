@@ -13,7 +13,7 @@ export type AboutMeSectionProps = {};
 export class AboutMeSection extends React.Component<AboutMeSectionProps> {
   render() {
     return (
-      <section style={{ minHeight: "100vh" }}>
+      <section style={{ minHeight: "100vh"}}>
         <Container>
           <LeftBlock>
             <img
@@ -59,11 +59,15 @@ export class AboutMeSection extends React.Component<AboutMeSectionProps> {
                 }}
               >
                 <StyledNumber variant="body1">8</StyledNumber>
-                <StyledText variant="body1">Year of experience</StyledText>
+                <StyledText variant="body1" sx={{ maxWidth: '92px' }}>
+                  Year of experience
+                </StyledText>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <StyledNumber variant="body1">25</StyledNumber>
-                <StyledText variant="body1">Satisfied Customers</StyledText>
+                <StyledText variant="body1" sx={{ maxWidth: '74px' }}>
+                  Satisfied Customers
+                </StyledText>
               </Box>
             </BottomRow>
           </RightBlock>
@@ -74,37 +78,35 @@ export class AboutMeSection extends React.Component<AboutMeSectionProps> {
 }
 
 const Container = styled(MuiContainer)({
-  minHeight: "70vh",
+  minHeight: "50vh",
   display: "flex",
   marginTop: "80px",
+  justifyContent:'space-between'
 });
 
 const LeftBlock = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  border: "1px solid crimson",
-  width: "50%",
-  position: "relative",
+  maxWidth: "485px",
+  width: "100%",
 });
 
 const RightBlock = styled(Box)({
-  border: "1px solid crimson",
-  width: "50%",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "flex-start",
+  justifyContent: "flex-end",
+  alignItems: "flex-start"
 });
 
 const StyledArticle = styled("article")(({ theme }) => ({
-  marginTop: "20px",
-  maxWidth: "558px",
-  marginBottom: "35px",
-  fontWeight: "500",
-  fontSize: "14px",
-  color: theme.palette.text.secondary,
-}));
+    marginTop: "20px",
+    maxWidth: "558px",
+    marginBottom: "35px",
+    fontWeight: "500",
+    fontSize: "14px",
+    color: theme.palette.text.secondary,
+  }));
 
 const StyledTypography = styled(Typography)({
   fontFamily: "Montserrat",
