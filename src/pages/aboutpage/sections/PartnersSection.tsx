@@ -9,7 +9,7 @@ export class PartnersSection extends Component {
     const icons = ["behance", "slack", "dribbble", "twilio", "github", "chargebee","udemy","instacaption","mapbox"];
 
     return (
-      <section style={{ position: "relative", minHeight: "100vh" }}>
+      <section style={{ position: "relative", minHeight: "100vh",paddingBottom:'60px' }}>
         <Box
           component="div"
           sx={{

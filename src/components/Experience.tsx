@@ -21,20 +21,18 @@ export default class Experience extends Component<ExperienceProps> {
       <Box
         sx={{
           position: "relative",
-          paddingRight: "73px",
+          paddingRight: "65px",
           paddingTop: `${paddingTop}px`,
           height: "40vh",
-
           "&::before": {
             content: '""',
             position: "absolute",
-            left: 0,
+            left: '-1%',
             top: 0,
             height: "100%",
             width: "1px",
             backgroundColor: "#F2F3F4",
           },
-          
           "&::after": isLast
             ? {
                 content: '""',
@@ -50,7 +48,17 @@ export default class Experience extends Component<ExperienceProps> {
       >
         <Icon iconId={iconId} width="92" height="20" />
         <div style={{ marginTop: "25px" }}>
-          <span style={{ fontSize: "40px" }}>{index}</span>
+          <span
+            style={{
+              color: "#FE390C",
+              fontFamily: "Anton",
+              fontSize: "40px",
+              fontWeight: 400,
+              marginRight:'5px'
+            }}
+          >
+            {index}
+          </span>
           <div
             style={{
               display: "inline-block",
@@ -59,8 +67,28 @@ export default class Experience extends Component<ExperienceProps> {
               verticalAlign: "top",
             }}
           >
-            <Typography variant="body1">{title}</Typography>
-            <Typography variant="body2">{period}</Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#111214",
+                fontFamily: "Montserrat",
+                fontSize: "16px",
+                fontWeight: 700,
+              }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "#FE390C",
+                fontFamily: "Montserrat",
+                fontSize: "14px",
+                fontWeight: 600,
+              }}
+            >
+              {period}
+            </Typography>
           </div>
         </div>
         <Typography
@@ -70,6 +98,11 @@ export default class Experience extends Component<ExperienceProps> {
             textAlign: "left",
             maxWidth: "212px",
             height: "100%",
+            color: "#A9A9AA",
+            fontFamily: "Montserrat",
+            fontSize: "14px",
+            fontWeight: 500,
+            lineHeight: "24px",
           }}
         >
           {description}
