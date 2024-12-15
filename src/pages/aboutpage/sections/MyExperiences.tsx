@@ -49,31 +49,23 @@ const experiences: ExperienceData[] = [
 export class MyExperiences extends Component {
   render() {
     return (
-      <section style={{ minHeight: "80vh" }}>
+      <section style={{ minHeight: "90vh", position: "relative" }}>
         <Container>
-          <Box
-            sx={{ display: "flex", justifyContent: "center", marginTop: "10%" }}
-          >
+          <Box sx={{ position: "absolute", left: "40%", top: "10%" }}>
             <SectionTitle index={3} title={"My Experiences"} />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "20px",
-            }}
-          >
-            {experiences.map((experience) => (
-              <Experience
-                key={experience.index}
-                iconId={experience.iconId}
-                index={experience.index}
-                title={experience.title}
-                period={experience.period}
-                description={experience.description}
-              />
-            ))}
-          </Box>
+
+          {experiences.map((experience, index) => (
+            <Experience
+              key={experience.index}
+              iconId={experience.iconId}
+              index={experience.index}
+              title={experience.title}
+              period={experience.period}
+              description={experience.description}
+              isLast={index === experiences.length - 1} // Передаем пропс для последнего элемента
+            />
+          ))}
         </Container>
       </section>
     );
