@@ -49,23 +49,36 @@ const experiences: ExperienceData[] = [
 export class MyExperiences extends Component {
   render() {
     return (
-      <section style={{ minHeight: "90vh", position: "relative" }}>
-        <Container>
-          <Box sx={{ position: "absolute", left: "40%", top: "10%" }}>
+      <section style={{ minHeight: "40vh", position: "relative" }}>
+        <Container sx={{ minHeight: "40vh" }}>
+          <Box sx={{ position: "absolute", left: "39%", top: "15%" }}>
             <SectionTitle index={3} title={"My Experiences"} />
           </Box>
 
-          {experiences.map((experience, index) => (
-            <Experience
-              key={experience.index}
-              iconId={experience.iconId}
-              index={experience.index}
-              title={experience.title}
-              period={experience.period}
-              description={experience.description}
-              isLast={index === experiences.length - 1} // Передаем пропс для последнего элемента
-            />
-          ))}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-start",
+            }}
+          >
+            {experiences.map((experience, index) => {
+              // Устанавливаем paddingTop на основании индекса
+              const paddingTop = 300 + index * 40;
+              return (
+                <Experience
+                  key={experience.index}
+                  iconId={experience.iconId}
+                  index={experience.index}
+                  title={experience.title}
+                  period={experience.period}
+                  description={experience.description}
+                  isLast={index === experiences.length - 1}
+                  paddingTop={paddingTop} // Передаем paddingTop как пропс
+                />
+              );
+            })}
+          </Box>
         </Container>
       </section>
     );
