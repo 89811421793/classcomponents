@@ -3,7 +3,7 @@ import { Menu } from "../menu/Menu";
 import { Button, Container, Box } from "@mui/material";
 import { Logo } from "../Logo";
 import { Theme } from "@mui/material/styles";
-import { Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
 
 const items = [
   { label: "home", path: "/" },
@@ -43,7 +43,7 @@ export class Header extends React.Component {
           >
             <Logo />
           </Box>
-          <Menu menuItems={items} /> 
+          <Menu menuItems={items} />
           <Button
             variant="contained"
             sx={{
@@ -60,8 +60,8 @@ export class Header extends React.Component {
                 backgroundColor: (theme) => theme.palette.background.default,
               },
             }}
-            component={Link} 
-            to="/contacts" 
+            component={Link}
+            to="/contacts"
           >
             Contact
           </Button>
