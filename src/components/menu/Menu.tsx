@@ -1,7 +1,34 @@
 import React from 'react';
-import { Box, Link } from '@mui/material';
+import { Box } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom'; 
+import { styled } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
 
-export class Menu extends React.Component<{ menuItems: Array<string> }> {
+// Определяем стилизованный компонент для элемента меню
+const StyledSpan = styled('span')(({ theme }: { theme: Theme }) => ({
+    textDecoration: 'none',
+    color: theme.palette.text.secondary,
+    textTransform: 'uppercase',
+    fontFamily: 'Montserrat',
+    fontSize: '12px',
+    fontWeight: 600,
+    '&:hover': {
+        color: theme.palette.accent.main,
+    },
+}));
+
+// Определяем интерфейс для пропсов компонента Menu
+interface MenuItem {
+    label: string;
+    path: string;
+}
+
+interface MenuProps {
+    menuItems: MenuItem[];
+}
+
+// Основной компонент Menu
+export class Menu extends React.Component<MenuProps> {
     render() {
         return (
             <Box 
@@ -13,35 +40,30 @@ export class Menu extends React.Component<{ menuItems: Array<string> }> {
                     display: 'flex', 
                     flex: '1', 
                     justifyContent: 'center',
-                    gap: '55px', // Устанавливаем отступ между пунктами меню
+                    gap: '55px',
                 }}
             >
-                {this.props.menuItems.map((tabItem) => (
+                {this.props.menuItems.map((item) => (
                     <Box 
                         component="li" 
-                        key={tabItem} 
+                        key={item.label} 
                         sx={{ 
                             '&:last-child': {
-                                marginRight: 0, // Убираем margin-right у последнего элемента
+                                marginRight: 0,
                             },
                         }}
                     >
-                        <Link 
-                            href="#" 
-                            sx={{ 
+                        <RouterLink 
+                            to={item.path}
+                            style={{ 
                                 textDecoration: 'none', 
-                                color: theme => theme.palette.text.secondary, // Цвет текста
-                                textTransform: 'uppercase', // Преобразование текста в верхний регистр
-                                fontFamily: 'Montserrat', // Используем шрифт Montserrat
-                                fontSize: '12px', // Устанавливаем размер шрифта
-                                fontWeight: 600, // Устанавливаем жирность шрифта
-                                '&:hover': {
-                                    color: theme => theme.palette.accent.main, // Цвет при наведении
-                                },
+                                color: 'inherit',
                             }}
                         >
-                            {tabItem}
-                        </Link>
+                            <StyledSpan>
+                                {item.label}
+                            </StyledSpan>
+                        </RouterLink>
                     </Box>
                 ))}
             </Box>

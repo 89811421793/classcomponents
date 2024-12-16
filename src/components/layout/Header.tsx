@@ -3,8 +3,14 @@ import { Menu } from "../menu/Menu";
 import { Button, Container, Box } from "@mui/material";
 import { Logo } from "../Logo";
 import { Theme } from "@mui/material/styles";
+import { Link } from 'react-router-dom'; 
 
-const items = ["home", "about", "service", "portfolio"];
+const items = [
+  { label: "home", path: "/" },
+  { label: "about", path: "/about" },
+  { label: "service", path: "/service" },
+  { label: "portfolio", path: "/portfolio" },
+];
 
 export class Header extends React.Component {
   render() {
@@ -37,7 +43,7 @@ export class Header extends React.Component {
           >
             <Logo />
           </Box>
-          <Menu menuItems={items} />
+          <Menu menuItems={items} /> 
           <Button
             variant="contained"
             sx={{
@@ -45,15 +51,17 @@ export class Header extends React.Component {
               border: (theme: Theme) =>
                 `1px solid ${theme.palette.accent.main}`,
               color: (theme) => theme.palette.accent.main,
-              padding: "12px 16px", 
-              backgroundColor: (theme) => theme.palette.background.default, // Цвет фона такой же как у header
-              fontFamily: "Montserrat", 
-              fontSize: "12px", 
-              fontWeight: 600, 
+              padding: "12px 16px",
+              backgroundColor: (theme) => theme.palette.background.default,
+              fontFamily: "Montserrat",
+              fontSize: "12px",
+              fontWeight: 600,
               "&:hover": {
-                backgroundColor: (theme) => theme.palette.background.default, // Цвет фона при наведении
+                backgroundColor: (theme) => theme.palette.background.default,
               },
             }}
+            component={Link} 
+            to="/contacts" 
           >
             Contact
           </Button>
