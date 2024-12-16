@@ -10,11 +10,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <Router>
-        <Layout>
+      <Router>    
+        <Layout> 
           <App />
         </Layout>
       </Router>
     </ThemeProvider>
   </StrictMode>
 );
+// Header входит в состав Layout, поэтому весь Layout надо обернуть в роуты
